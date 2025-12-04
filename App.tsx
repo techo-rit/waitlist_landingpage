@@ -8,12 +8,12 @@ import { Icon, Logo } from './components/Icons';
 
 // --- CONFIGURATION: HERO FLOATING TEMPLATES ---
 const HERO_IMAGES = [
-  "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/character/Gemini_Generated_Image_aqntxoaqntxoaqnt.png?width=800&format=webp&quality=80", //
-  "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/character/Gemini_Generated_Image_uplfj3uplfj3uplf.png?width=800&format=webp&quality=80",   // 
-  "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/character/germanman.png?width=800&format=webp&quality=80",  // 
-  "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/output/Gemini_Generated_Image_7hzu967hzu967hzu.png?width=800&format=webp&quality=80",  // 
-  "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/output/Gemini_Generated_Image_wpxmjkwpxmjkwpxm.png?width=800&format=webp&quality=80",     // 
-  "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/output/Gemini_Generated_Image_vevkjvevkjvevkjv.png?width=800&format=webp&quality=80"   //
+  "/images/topleft.webp", //
+  "/images/middleleft.webp",   // 
+  "/images/bottomleft.webp",  // 
+  "/images/topright.webp",  // 
+  "/images/middleright.webp",     // 
+  "/images/bottomright.webp"   //
 ];
 
 // --- CONFIGURATION: BACKGROUND VIBRANT TILES ---
