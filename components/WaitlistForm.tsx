@@ -75,7 +75,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
           <div className="flex-1">
              <input 
               type="email" 
-              placeholder="Enter your email address" 
+              placeholder="Email address" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -115,7 +115,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
           <Icon name="Sparkles" className="absolute left-4 w-5 h-5 text-gray-400 group-focus-within:text-brand-400 transition-colors z-10" />
           <input 
             type="email" 
-            placeholder="Enter your email address..." 
+            placeholder="email address..." 
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -127,7 +127,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
             disabled={status === 'loading'}
             className="absolute right-2 top-2 bottom-2 bg-white text-black hover:bg-gray-200 font-bold px-6 rounded-full transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-2"
           >
-            {status === 'loading' ? <Icon name="Loader2" className="w-5 h-5 animate-spin" /> : 'Join List'}
+            {status === 'loading' ? <Icon name="Loader2" className="w-5 h-5 animate-spin" /> : 'Join Waitlist'}
           </button>
         </div>
         
