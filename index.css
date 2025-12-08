@@ -1,0 +1,39 @@
+/* VideoPlayer support styles */
+.video-player {
+  background: #000;
+  position: relative;
+  min-height: 220px; /* safe fallback */
+  display: block;
+}
+
+.video-player .video-poster {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+}
+
+/* Make <video> display above poster but under overlay buttons */
+.video-player video {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}
+
+/* smooth rounded corners on video content */
+.video-player video,
+.video-player .video-poster {
+  border-radius: 1rem;
+}
+
+/* Utility: responsive aspect ratio (16:9) */
+.aspect-\[16\/9\] {
+  aspect-ratio: 16 / 9;
+}
+
+/* Small media tweak: show overlay play button on mobile */
+@media (max-width: 768px) {
+  .video-player button[aria-label="Toggle video"] {
+    display: inline-flex;
+  }
+}

@@ -1,21 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { WaitlistForm } from './components/WaitlistForm';
 import { WaitlistModal } from './components/WaitlistModal';
-import { DeckShowcase } from './components/DeckShowcase';
 import { ComingSoon } from './components/ComingSoon';
 import { Icon, Logo } from './components/Icons';
+import VideoPlayer from "./components/VideoPlayer";
+
+/* ================================
+   VIDEO URL CONFIG
+===================================*/
+const LOWERWEAR_MP4 = "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/landingpage/fitit_lowerwear.mp4";
+const LOWERWEAR_WEBM = "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/landingpage/fitit_lowerwear.webm";
+const LOWERWEAR_POSTER = "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/landingpage/fitit_lowerwear_poster.webp";
+
+const UPPERWEAR_MP4 = "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/landingpage/fitit_upperwear.mp4";
+const UPPERWEAR_WEBM = "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/landingpage/fitit_upperwear.webm";
+const UPPERWEAR_POSTER = "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/landingpage/fitit_upperwear_poster.webp";
+
+const CREATOR_MP4 = "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/landingpage/fitit_creator.mp4";
+const CREATOR_WEBM = "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/landingpage/fitit_creator.webm";
+const CREATOR_POSTER = "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/landingpage/fitit_creator_poster.webp";
 
 
-// --- CONFIGURATION: HERO FLOATING TEMPLATES ---
+/* ================================
+   HERO IMAGES
+===================================*/
 const HERO_IMAGES = [
-  "/images/topleft.webp", //
-  "/images/middleleft.webp",   // 
-  "/images/bottomleft.webp",  // 
-  "/images/topright.webp",  // 
-  "/images/middleright.webp",     // 
-  "/images/bottomright.webp"   //
+  "/images/topleft.webp",
+  "/images/middleleft.webp",
+  "/images/bottomleft.webp",
+  "/images/topright.webp",
+  "/images/middleright.webp",
+  "/images/bottomright.webp"
 ];
-
 // --- CONFIGURATION: BACKGROUND VIBRANT TILES ---
 // Using slightly more colorful/vibrant images for the scrolling wall
 const BACKGROUND_TILES = [
@@ -45,107 +61,41 @@ function App() {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
 
   useEffect(() => {
-    // Check if user has signed up in the last 7 days
-    const checkSignupStatus = () => {
-      const signupDate = localStorage.getItem('nopromt_signup_date');
-      if (signupDate) {
-        const date = new Date(signupDate);
-        const now = new Date();
-        const diffTime = Math.abs(now.getTime() - date.getTime());
-        const diffDays = diffTime / (1000 * 60 * 60 * 24);
-        
-        if (diffDays < 7) {
-          setView('coming-soon');
-        }
-      }
-      setIsLoading(false);
-    };
-
-    checkSignupStatus();
+    const stored = localStorage.getItem('nopromt_signup_date');
+    if (stored) {
+      const diff = (Date.now() - new Date(stored).getTime()) / (1000 * 60 * 60 * 24);
+      if (diff < 7) setView("coming-soon");
+    }
+    setIsLoading(false);
   }, []);
 
   const handleSignupSuccess = () => {
-    localStorage.setItem('nopromt_signup_date', new Date().toISOString());
+    localStorage.setItem("nopromt_signup_date", new Date().toISOString());
     setIsWaitlistOpen(false);
-    setView('coming-soon');
+    setView("coming-soon");
     window.scrollTo(0, 0);
   };
-
-  const handleBack = () => {
-    localStorage.removeItem('nopromt_signup_date');
-    setView('landing');
-  };
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
+  
   if (isLoading) return null;
-
-  if (view === 'coming-soon') {
-    return <ComingSoon onBack={handleBack} />;
-  }
+  if (view === "coming-soon") return <ComingSoon onBack={() => setView("landing")} />;
 
   return (
-    <div className="min-h-screen bg-[#030712] text-white selection:bg-brand-500 selection:text-white font-sans overflow-x-hidden relative">
-      
-      {/* === GLOBAL SCROLLING BACKGROUND WALL === */}
-      <div className="fixed inset-0 z-[-10] overflow-hidden pointer-events-none">
-        {/* Dark overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-black/85 z-10"></div>
-        
-        {/* Masonry Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-[150vh] -mt-20 opacity-40">
-           {/* Column 1 - Scroll Down */}
-           <div className="flex flex-col gap-4 animate-marquee">
-             {MARQUEE_TILES.map((src, i) => (
-               <div key={`c1-${i}`} className="relative rounded-lg overflow-hidden flex-shrink-0 w-full aspect-[2/3]">
-                 <img src={src} alt="bg" className="w-full h-full object-cover grayscale-[30%]" />
-               </div>
-             ))}
-           </div>
+    <div className="min-h-screen bg-[#030712] text-white font-sans overflow-x-hidden relative">
 
-           {/* Column 2 - Scroll Up (Reverse) */}
-           <div className="flex flex-col gap-4 animate-marquee-reverse">
-             {MARQUEE_TILES.reverse().map((src, i) => (
-               <div key={`c2-${i}`} className="relative rounded-lg overflow-hidden flex-shrink-0 w-full aspect-[2/3]">
-                 <img src={src} alt="bg" className="w-full h-full object-cover grayscale-[30%]" />
-               </div>
-             ))}
-           </div>
-
-           {/* Column 3 - Scroll Down */}
-           <div className="hidden md:flex flex-col gap-4 animate-marquee">
-             {MARQUEE_TILES.map((src, i) => (
-               <div key={`c3-${i}`} className="relative rounded-lg overflow-hidden flex-shrink-0 w-full aspect-[2/3]">
-                 <img src={src} alt="bg" className="w-full h-full object-cover grayscale-[30%]" />
-               </div>
-             ))}
-           </div>
-
-            {/* Column 4 - Scroll Up (Reverse) */}
-           <div className="hidden md:flex flex-col gap-4 animate-marquee-reverse">
-             {MARQUEE_TILES.reverse().map((src, i) => (
-               <div key={`c4-${i}`} className="relative rounded-lg overflow-hidden flex-shrink-0 w-full aspect-[2/3]">
-                 <img src={src} alt="bg" className="w-full h-full object-cover grayscale-[30%]" />
-               </div>
-             ))}
-           </div>
-        </div>
-      </div>
-      {/* ======================================= */}
-
-      <WaitlistModal 
-        isOpen={isWaitlistOpen} 
-        onClose={() => setIsWaitlistOpen(false)} 
-        onSignupSuccess={handleSignupSuccess} 
+      <WaitlistModal
+        isOpen={isWaitlistOpen}
+        onClose={() => setIsWaitlistOpen(false)}
+        onSignupSuccess={handleSignupSuccess}
       />
 
       {/* Navbar */}
-      <nav className="fixed top-0 w-full z-50 bg-[#000000]/80 backdrop-blur-md border-b border-white/5">
+      <nav className="w-full z-50 bg-[#000000]/80 backdrop-blur-md border-b border-white/5">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <div className="relative flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
@@ -346,8 +296,63 @@ function App() {
         </div>
       </header>
 
-      {/* Visual Deck Showcase */}
-      <DeckShowcase onJoinWaitlist={() => setIsWaitlistOpen(true)} />
+       <section className="py-24 bg-[#050505] relative">
+        <div className="container mx-auto px-6 max-w-6xl space-y-24">
+
+          {/* LOWERWEAR */}
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-4xl font-bold mb-3">Try-On: Lowerwear</h2>
+              <p className="text-gray-400 text-lg max-w-md">
+                Realistic lowerwear try-on using our intelligent blending pipeline.
+              </p>
+            </div>
+            <div className="flex-1">
+              <VideoPlayer
+                mp4={LOWERWEAR_MP4}
+                webm={LOWERWEAR_WEBM}
+                poster={LOWERWEAR_POSTER}
+              />
+            </div>
+          </div>
+
+          {/* UPPERWEAR */}
+          <div className="flex flex-col md:flex-row-reverse items-center gap-12">
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-4xl font-bold mb-3">Try-On: Upperwear</h2>
+              <p className="text-gray-400 text-lg max-w-md">
+                Upperwear try-on with precise alignment and lighting match.
+              </p>
+            </div>
+            <div className="flex-1">
+              <VideoPlayer
+                mp4={UPPERWEAR_MP4}
+                webm={UPPERWEAR_WEBM}
+                poster={UPPERWEAR_POSTER}
+              />
+            </div>
+          </div>
+
+          {/* CREATOR MODE */}
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-4xl font-bold mb-3">Creator Mode</h2>
+              <p className="text-gray-400 text-lg max-w-md">
+                Build your own looks at high fidelity with instant preview.
+              </p>
+            </div>
+            <div className="flex-1">
+              <VideoPlayer
+                mp4={CREATOR_MP4}
+                webm={CREATOR_WEBM}
+                poster={CREATOR_POSTER}
+              />
+            </div>
+          </div>
+
+        </div>
+      </section>
+
 
       {/* Revamp in 3 Clicks (Value Proposition) */}
       <section id="how-it-works" className="scroll-mt-20 py-24 bg-black/50 backdrop-blur-sm border-y border-white/5 relative">
