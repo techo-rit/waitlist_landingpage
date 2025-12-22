@@ -254,16 +254,14 @@ function App() {
     `
   }}
 >
-  Don't Prompt.<br />
-  Just Pick.
+Where Intention<br />
+Becomes Real
+
 </h1>
 
 
           {/* Description Box */}
           <div className="max-w-2xl mb-12">
-          // …imports and configs remain unchanged
-
-// ================= HERO DESCRIPTION =================
 <p
   className="text-lg md:text-xl text-gray-100 leading-relaxed font-medium"
   style={{
