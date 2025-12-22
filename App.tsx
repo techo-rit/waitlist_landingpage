@@ -254,8 +254,8 @@ function App() {
     `
   }}
 >
-Where Intention<br />
-Becomes Real
+Where intention<br/>
+becomes real
 
 </h1>
 
