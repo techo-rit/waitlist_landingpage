@@ -261,7 +261,10 @@ function App() {
 
           {/* Description Box */}
           <div className="max-w-2xl mb-12">
-          <p
+          // …imports and configs remain unchanged
+
+// ================= HERO DESCRIPTION =================
+<p
   className="text-lg md:text-xl text-gray-100 leading-relaxed font-medium"
   style={{
     textShadow: `
@@ -273,10 +276,13 @@ function App() {
     `
   }}
 >
-  After a decade of refining prompt engineering, presenting nopromt.ai,
-  removing the prompts entirely. You tap, it delivers. Simple, fast, and
-  built to change how you use AI forever.
+  Everything in life begins as a thought.
+  What you focus on grows.
+  What you clearly visualise starts shaping itself into reality.
+  nopromt.ai is built on this principle — a space where intention becomes visible,
+  and vision moves closer to existence.
 </p>
+
 
 
 
@@ -298,14 +304,34 @@ function App() {
 
        <section className="py-24 bg-[#050505] relative">
         <div className="container mx-auto px-6 max-w-6xl space-y-24">
+        {/* CREATOR MODE */}
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-4xl font-bold mb-3">Creator Mode</h2>
+              <p className="text-gray-400 text-lg max-w-md">
+  Creation starts when your inner vision becomes clear.
+  Here, you intentionally bring ideas closer to form.
+</p>
 
+            </div>
+            <div className="flex-1">
+              <VideoPlayer
+                mp4={CREATOR_MP4}
+                webm={CREATOR_WEBM}
+                poster={CREATOR_POSTER}
+              />
+            </div>
+          </div>
+          
           {/* LOWERWEAR */}
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1 text-center md:text-left">
               <h2 className="text-4xl font-bold mb-3">Try-On: Lowerwear</h2>
               <p className="text-gray-400 text-lg max-w-md">
-                Realistic lowerwear try-on using our intelligent blending pipeline.
-              </p>
+  Before reality catches up, the mind must see it first.
+  Visualise outcomes clearly — grounded, realistic, and aligned with how you see yourself.
+</p>
+
             </div>
             <div className="flex-1">
               <VideoPlayer
@@ -321,8 +347,10 @@ function App() {
             <div className="flex-1 text-center md:text-left">
               <h2 className="text-4xl font-bold mb-3">Try-On: Upperwear</h2>
               <p className="text-gray-400 text-lg max-w-md">
-                Upperwear try-on with precise alignment and lighting match.
-              </p>
+  Manifestation works best when the image feels real.
+  When you see it clearly, the mind accepts it as possible.
+</p>
+
             </div>
             <div className="flex-1">
               <VideoPlayer
@@ -333,22 +361,7 @@ function App() {
             </div>
           </div>
 
-          {/* CREATOR MODE */}
-          <div className="flex flex-col md:flex-row items-center gap-12">
-            <div className="flex-1 text-center md:text-left">
-              <h2 className="text-4xl font-bold mb-3">Creator Mode</h2>
-              <p className="text-gray-400 text-lg max-w-md">
-                Build your own looks at high fidelity with instant preview.
-              </p>
-            </div>
-            <div className="flex-1">
-              <VideoPlayer
-                mp4={CREATOR_MP4}
-                webm={CREATOR_WEBM}
-                poster={CREATOR_POSTER}
-              />
-            </div>
-          </div>
+          
 
         </div>
       </section>
@@ -365,9 +378,11 @@ function App() {
             <div>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Revamp in 3 Clicks.</h2>
               <p className="text-gray-400 text-lg mb-12 leading-relaxed">
-                Existing tools are "hell of a confusion." We stripped it all away. We handle the complex prompt
-                engineering in the backend so you don't have to.
-              </p>
+  Manifestation is not about effort.
+  It is about clarity.
+  When intention is clear, the path simplifies itself.
+</p>
+
 
               <div className="space-y-10">
                 {/* Step 1 */}
@@ -377,7 +392,9 @@ function App() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-200 transition-colors">Upload Image</h3>
-                    <p className="text-gray-400">Drop your photo. No need to describe it.</p>
+<p className="text-gray-400">
+  Begin with your current reality.
+</p>
                   </div>
                 </div>
 
@@ -388,7 +405,9 @@ function App() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2 group-hover:text-pink-200 transition-colors">Pick a Visual Deck</h3>
-                    <p className="text-gray-400">Browse the stacks. See a preview you like? Click it.</p>
+<p className="text-gray-400">
+  Choose the version that aligns with your inner vision.
+</p>
                   </div>
                 </div>
 
@@ -399,7 +418,9 @@ function App() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-200 transition-colors">Instant Revamp</h3>
-                    <p className="text-gray-400">Our engine blends your image with the deck flawlessly.</p>
+<p className="text-gray-400">
+  When vision and intention align, results appear faster.
+</p>
                   </div>
                 </div>
               </div>
@@ -465,7 +486,7 @@ function App() {
           
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Why NoPromt?</h2>
-            <p className="text-xl text-gray-400">The other guys are built for prompt engineers. We are built for you.</p>
+            <p className="text-xl text-gray-400">It's not a changing room, it's a tranformation room</p>
           </div>
 
           <div className="max-w-4xl mx-auto bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-colors">
@@ -480,11 +501,9 @@ function App() {
             <div className="grid grid-cols-12 border-b border-white/10 p-6 md:p-8 items-center hover:bg-white/5 transition-colors group">
               <div className="col-span-4 text-white font-bold text-lg group-hover:text-purple-200 transition-colors">Ease of Use</div>
               <div className="col-span-4 flex items-center gap-3 text-gray-500">
-                <Icon name="XCircle" className="w-5 h-5 text-red-500/50 flex-shrink-0" />
                 <span>Hell of a confusion</span>
               </div>
               <div className="col-span-4 flex items-center gap-3 text-white font-bold">
-                <Icon name="CheckCircle2" className="w-5 h-5 text-green-500 flex-shrink-0 group-hover:scale-110 transition-transform" />
                 <span>3 Clicks Max</span>
               </div>
             </div>
@@ -493,12 +512,10 @@ function App() {
             <div className="grid grid-cols-12 border-b border-white/10 p-6 md:p-8 items-center hover:bg-white/5 transition-colors group">
               <div className="col-span-4 text-white font-bold text-lg group-hover:text-purple-200 transition-colors">Knowledge Required</div>
               <div className="col-span-4 flex items-center gap-3 text-gray-500">
-                <Icon name="XCircle" className="w-5 h-5 text-red-500/50 flex-shrink-0" />
-                <span>Prompt Engineering</span>
+<span>Mental effort</span>
               </div>
               <div className="col-span-4 flex items-center gap-3 text-white font-bold">
-                <Icon name="CheckCircle2" className="w-5 h-5 text-green-500 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                <span>Visual Shopping</span>
+<span>Intentional selection</span>
               </div>
             </div>
 
@@ -506,12 +523,10 @@ function App() {
             <div className="grid grid-cols-12 border-b border-white/10 p-6 md:p-8 items-center hover:bg-white/5 transition-colors group">
               <div className="col-span-4 text-white font-bold text-lg group-hover:text-purple-200 transition-colors">Output Style</div>
               <div className="col-span-4 flex items-center gap-3 text-gray-500">
-                <Icon name="XCircle" className="w-5 h-5 text-red-500/50 flex-shrink-0" />
-                <span>Fantasy / Fake</span>
+<span>Disconnected</span>
               </div>
               <div className="col-span-4 flex items-center gap-3 text-white font-bold">
-                <Icon name="CheckCircle2" className="w-5 h-5 text-green-500 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                <span>Relatable & Realistic</span>
+<span>Believable & grounded</span>
               </div>
             </div>
 
@@ -519,11 +534,9 @@ function App() {
             <div className="grid grid-cols-12 p-6 md:p-8 items-center hover:bg-white/5 transition-colors group">
               <div className="col-span-4 text-white font-bold text-lg group-hover:text-purple-200 transition-colors">Experience</div>
               <div className="col-span-4 flex items-center gap-3 text-gray-500">
-                <Icon name="XCircle" className="w-5 h-5 text-red-500/50 flex-shrink-0" />
                 <span>Toolbox</span>
               </div>
               <div className="col-span-4 flex items-center gap-3 text-white font-bold">
-                <Icon name="CheckCircle2" className="w-5 h-5 text-green-500 flex-shrink-0 group-hover:scale-110 transition-transform" />
                 <span>Discovery</span>
               </div>
             </div>
@@ -543,10 +556,15 @@ function App() {
           <div className="inline-block p-3 rounded-full bg-brand-900/30 border border-brand-500/30 mb-6 animate-float">
              <Icon name="Sparkles" className="w-6 h-6 text-brand-400" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Join the Revolution</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Join to evolve</h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-10">
-            We are launching properly next week. Sign up now to get early access and we will notify you when the doors open.
-          </p>
+  Manifestation works faster when you are surrounded by the right energy.
+  The inner circle is for early believers — people who understand that clarity
+  comes before results, and vision comes before reality.
+  Join early to align, influence what is being built,
+  and step into the experience before it opens to everyone.
+</p>
+
           <div className="max-w-xl mx-auto">
              <WaitlistForm onSignupSuccess={handleSignupSuccess} />
           </div>

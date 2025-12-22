@@ -106,8 +106,7 @@ export const ComingSoon: React.FC<ComingSoonProps> = ({ onBack }) => {
                 <div className="mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-center gap-4 text-sm text-gray-400">
                     <span className="flex items-center gap-2 bg-green-900/30 px-3 py-1 rounded-full border border-green-500/20 text-green-400">
                         <Icon name="CheckCircle2" className="w-4 h-4" />
-                        Priority Access
-                    </span>
+Welcome to the Inner Circle.                    </span>
                 </div>
             </div>
             
