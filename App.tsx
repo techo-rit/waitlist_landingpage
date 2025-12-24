@@ -112,7 +112,7 @@ function App() {
               onClick={() => setIsWaitlistOpen(true)}
               className="relative overflow-hidden bg-white text-black px-6 py-2.5 rounded-full text-sm font-bold hover:bg-gray-100 transition-all shadow-[0_0_15px_rgba(255,255,255,0.15)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] hover:scale-105"
             >
-              Get Early Access
+              Get Free Access
             </button>
           </div>
         </div>
@@ -254,9 +254,8 @@ function App() {
     `
   }}
 >
-Where intention<br/>
-becomes real
-
+From creation<br/>
+To reality
 </h1>
 
 
