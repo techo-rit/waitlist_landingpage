@@ -137,6 +137,12 @@ function App() {
     src={`${HERO_IMAGES[0]}?width=800&quality=80&format=webp`}
     alt="Template 1"
     loading="lazy"
+    decoding="async"
+  srcSet={`
+    ${HERO_IMAGES[0]}?width=400&quality=80&format=webp 400w,
+    ${HERO_IMAGES[0]}?width=800&quality=80&format=webp 800w
+  `}
+  sizes="(max-width: 640px) 200px, 240px"
     onLoad={() => setLoaded(true)}
     style={{
       filter: loaded ? "blur(0)" : "blur(20px)",
@@ -153,6 +159,12 @@ function App() {
     src={`${HERO_IMAGES[1]}?width=800&quality=80&format=webp`}
     alt="Template 2"
     loading="lazy"
+    decoding="async"
+  srcSet={`
+    ${HERO_IMAGES[1]}?width=400&quality=80&format=webp 400w,
+    ${HERO_IMAGES[1]}?width=800&quality=80&format=webp 800w
+  `}
+  sizes="(max-width: 640px) 200px, 240px"
     onLoad={() => setLoaded(true)}
     style={{
       filter: loaded ? "blur(0)" : "blur(20px)",
@@ -169,6 +181,12 @@ function App() {
     src={`${HERO_IMAGES[2]}?width=800&quality=80&format=webp`}
     alt="Template 3"
     loading="lazy"
+    decoding="async"
+  srcSet={`
+    ${HERO_IMAGES[2]}?width=400&quality=80&format=webp 400w,
+    ${HERO_IMAGES[2]}?width=800&quality=80&format=webp 800w
+  `}
+  sizes="(max-width: 640px) 200px, 240px"
     onLoad={() => setLoaded(true)}
     style={{
       filter: loaded ? "blur(0)" : "blur(20px)",
@@ -186,6 +204,12 @@ function App() {
     src={`${HERO_IMAGES[3]}?width=800&quality=80&format=webp`}
     alt="Template 4"
     loading="lazy"
+    decoding="async"
+  srcSet={`
+    ${HERO_IMAGES[3]}?width=400&quality=80&format=webp 400w,
+    ${HERO_IMAGES[3]}?width=800&quality=80&format=webp 800w
+  `}
+  sizes="(max-width: 640px) 200px, 240px"
     onLoad={() => setLoaded(true)}
     style={{
       filter: loaded ? "blur(0)" : "blur(20px)",
@@ -202,6 +226,12 @@ function App() {
     src={`${HERO_IMAGES[4]}?width=800&quality=80&format=webp`}
     alt="Template 5"
     loading="lazy"
+    decoding="async"
+  srcSet={`
+    ${HERO_IMAGES[4]}?width=400&quality=80&format=webp 400w,
+    ${HERO_IMAGES[4]}?width=800&quality=80&format=webp 800w
+  `}
+  sizes="(max-width: 640px) 200px, 240px"
     onLoad={() => setLoaded(true)}
     style={{
       filter: loaded ? "blur(0)" : "blur(20px)",
@@ -218,6 +248,12 @@ function App() {
     src={`${HERO_IMAGES[5]}?width=800&quality=80&format=webp`}
     alt="Template 6"
     loading="lazy"
+    decoding="async"
+  srcSet={`
+    ${HERO_IMAGES[5]}?width=400&quality=80&format=webp 400w,
+    ${HERO_IMAGES[5]}?width=800&quality=80&format=webp 800w
+  `}
+  sizes="(max-width: 640px) 200px, 240px"
     onLoad={() => setLoaded(true)}
     style={{
       filter: loaded ? "blur(0)" : "blur(20px)",
