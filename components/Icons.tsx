@@ -6,7 +6,7 @@ export const Logo = ({ className, width = 40, height = 40 }: { className?: strin
     <circle cx="32" cy="32" r="32" fill="#000000" />
     <path
       d="M21 46V29C21 20 32 20 32 29V46M32 21C42 21 47 25 47 31C47 37 42 41 32 41"
-      stroke="#FFFFFF" 
+      stroke="currentColor" 
       strokeWidth="5" 
       strokeLinecap="round"
       strokeLinejoin="round"

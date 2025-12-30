@@ -86,7 +86,7 @@ function App() {
   if (view === "coming-soon") return <ComingSoon onBack={() => setView("landing")} />;
 
   return (
-    <div className="min-h-screen bg-[#030712] text-white font-sans overflow-x-hidden relative">
+    <div className="min-h-screen bg-bg-main text-text-primary font-sans overflow-x-hidden relative">
 
       <WaitlistModal
         isOpen={isWaitlistOpen}
@@ -95,22 +95,22 @@ function App() {
       />
 
       {/* Navbar */}
-      <nav className="w-full z-50 bg-[#000000]/80 backdrop-blur-md border-b border-white/5">
+      <nav className="w-full z-50 bg-bg-main/80 backdrop-blur-md border-b border-border-subtle">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <div className="relative flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
                  <Logo width={32} height={32} />
             </div>
-            <span className="text-xl font-bold tracking-tight text-white group-hover:text-purple-200 transition-colors">nopromt.ai</span>
+            <span className="text-xl font-bold tracking-tight text-text-primary group-hover:text-gold transition-colors uppercase tracking-widest">nopromt.ai</span>
           </div>
           
           <div className="hidden md:flex items-center gap-8">
-            <a href="#how-it-works" onClick={(e) => { e.preventDefault(); scrollToSection('how-it-works'); }} className="text-sm font-medium text-gray-300 hover:text-white transition-colors hover:scale-105 transform">How it Works</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); setIsWaitlistOpen(true); }} className="text-sm font-medium text-gray-300 hover:text-white transition-colors hover:scale-105 transform">Visual Decks</a>
-            <a href="#why-us" onClick={(e) => { e.preventDefault(); scrollToSection('why-us'); }} className="text-sm font-medium text-gray-300 hover:text-white transition-colors hover:scale-105 transform">Why Us</a>
+            <a href="#how-it-works" onClick={(e) => { e.preventDefault(); scrollToSection('how-it-works'); }} className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors hover:scale-105 transform">How it Works</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); setIsWaitlistOpen(true); }} className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors hover:scale-105 transform">Visual Decks</a>
+            <a href="#why-us" onClick={(e) => { e.preventDefault(); scrollToSection('why-us'); }} className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors hover:scale-105 transform">Why Us</a>
             <button 
               onClick={() => setIsWaitlistOpen(true)}
-              className="relative overflow-hidden bg-white text-black px-6 py-2.5 rounded-full text-sm font-bold hover:bg-gray-100 transition-all shadow-[0_0_15px_rgba(255,255,255,0.15)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] hover:scale-105"
+              className="relative overflow-hidden bg-gold-strong text-bg-surface px-6 py-2.5 rounded-full text-sm font-bold hover:bg-gold transition-all shadow-[0_0_15px_rgba(245,199,106,0.15)] hover:shadow-[0_0_25px_rgba(245,199,106,0.4)] hover:scale-105"
             >
               Get Free Access
             </button>
@@ -125,7 +125,7 @@ function App() {
         <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center">
           
           {/* Global Ambient Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-red-900/30 rounded-full blur-[120px] mix-blend-screen animate-pulse-slow"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/10 rounded-full blur-[120px] mix-blend-screen animate-pulse-slow"></div>
 
           {/* Floating Composition */}
           <div className="relative w-full max-w-[1400px] h-full opacity-80">
@@ -268,10 +268,10 @@ function App() {
           </div>
 
           {/* Fade out to black at bottom */}
-          <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-[#030712] via-[#030712]/90 to-transparent z-20"></div>
+          <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-bg-main via-bg-main/90 to-transparent z-20"></div>
           
           {/* Fade out to black at top */}
-          <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-[#030712]/90 to-transparent z-20"></div>
+          <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-bg-main/90 to-transparent z-20"></div>
         </div>
         {/* === End Background Section === */}
 
@@ -279,14 +279,10 @@ function App() {
         <div className="container mx-auto px-6 text-center relative z-30 flex flex-col items-center">
           
           <h1
-  className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white mb-8 leading-[0.9]"
+  className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-text-primary mb-8 leading-[0.9] uppercase tracking-luxury"
   style={{
     textShadow: `
-      2px 2px 0 #000,
-      -2px 2px 0 #000,
-      2px -2px 0 #000,
-      -2px -2px 0 #000,
-      0 0 6px #000
+      0 0 20px rgba(245, 199, 106, 0.3)
     `
   }}
 >
@@ -298,14 +294,10 @@ To reality
           {/* Description Box */}
           <div className="max-w-2xl mb-12">
 <p
-  className="text-lg md:text-xl text-gray-100 leading-relaxed font-medium"
+  className="text-lg md:text-xl text-text-secondary leading-relaxed font-medium"
   style={{
     textShadow: `
-      1px 1px 0 #000,
-      -1px 1px 0 #000,
-      1px -1px 0 #000,
-      -1px -1px 0 #000,
-      0 0 3px #000
+      0 0 10px rgba(0, 0, 0, 0.5)
     `
   }}
 >
@@ -324,10 +316,10 @@ To reality
 
           <button 
             onClick={() => setIsWaitlistOpen(true)}
-            className="group relative overflow-hidden bg-gradient-to-r from-purple-600 to-pink-600 text-white text-lg font-bold px-10 py-4 rounded-xl transition-all hover:scale-105 shadow-lg shadow-purple-500/30 flex items-center gap-2"
+            className="group relative overflow-hidden bg-gold-strong text-bg-surface text-lg font-bold px-10 py-4 rounded-full transition-all hover:scale-105 shadow-lg shadow-gold/30 flex items-center gap-2"
           >
             {/* Shimmer effect */}
-            <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-10"></div>
+            <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent z-10"></div>
             
             <span className="relative z-20">Get Started</span>
             <Icon name="ArrowRight" className="w-5 h-5 relative z-20 group-hover:translate-x-1 transition-transform" />
@@ -335,13 +327,13 @@ To reality
         </div>
       </header>
 
-       <section className="py-24 bg-[#050505] relative">
+       <section className="py-24 bg-bg-main relative">
         <div className="container mx-auto px-6 max-w-6xl space-y-24">
         {/* CREATOR MODE */}
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1 text-center md:text-left">
-              <h2 className="text-4xl font-bold mb-3">Creator Mode</h2>
-              <p className="text-gray-400 text-lg max-w-md">
+              <h2 className="text-4xl font-bold mb-3 text-text-primary uppercase tracking-wide">Creator Mode</h2>
+              <p className="text-text-secondary text-lg max-w-md">
   Creation starts when your inner vision becomes clear.
   Here, you intentionally bring ideas closer to form.
 </p>
@@ -359,8 +351,8 @@ To reality
           {/* LOWERWEAR */}
             <div className="flex flex-col md:flex-row-reverse items-center gap-12">
             <div className="flex-1 text-center md:text-left">
-              <h2 className="text-4xl font-bold mb-3">Try-On: Lowerwear</h2>
-              <p className="text-gray-400 text-lg max-w-md">
+              <h2 className="text-4xl font-bold mb-3 text-text-primary uppercase tracking-wide">Try-On: Lowerwear</h2>
+              <p className="text-text-secondary text-lg max-w-md">
   Before reality catches up, the mind must see it first.
   Visualise outcomes clearly — grounded, realistic, and aligned with how you see yourself.
 </p>
@@ -378,8 +370,8 @@ To reality
           {/* UPPERWEAR */}
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1 text-center md:text-left">
-              <h2 className="text-4xl font-bold mb-3">Try-On: Upperwear</h2>
-              <p className="text-gray-400 text-lg max-w-md">
+              <h2 className="text-4xl font-bold mb-3 text-text-primary uppercase tracking-wide">Try-On: Upperwear</h2>
+              <p className="text-text-secondary text-lg max-w-md">
   Manifestation works best when the image feels real.
   When you see it clearly, the mind accepts it as possible.
 </p>
@@ -402,15 +394,23 @@ To reality
 
       {/* Revamp in 3 Clicks (Value Proposition) */}
       <section id="how-it-works" className="scroll-mt-20 py-24 bg-black/50 backdrop-blur-sm border-y border-white/5 relative">
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[100px] pointer-events-none"></div>
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
 
             {/* Left: Text Content */}
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Revamp in 3 Clicks.</h2>
-              <p className="text-gray-400 text-lg mb-12 leading-relaxed">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 teg-surface/50 backdrop-blur-sm border-y border-border-subtle relative">
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[100px] pointer-events-none"></div>
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+            {/* Left: Text Content */}
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-text-primary uppercase tracking-wide">Revamp in 3 Clicks.</h2>
+              <p className="text-text-secondary text-lg mb-12 leading-relaxed">
   Manifestation is not about effort.
   It is about clarity.
   When intention is clear, the path simplifies itself.
@@ -420,12 +420,12 @@ To reality
               <div className="space-y-10">
                 {/* Step 1 */}
                 <div className="flex gap-6 group">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#1a1a1a] flex items-center justify-center text-white font-bold border border-white/10 shadow-lg group-hover:border-purple-500/50 group-hover:text-purple-400 transition-colors">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-bg-surface flex items-center justify-center text-text-primary font-bold border border-border-subtle shadow-lg group-hover:border-gold/50 group-hover:text-gold transition-colors">
                     1
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-200 transition-colors">Upload Image</h3>
-<p className="text-gray-400">
+                    <h3 className="text-xl font-bold text-text-primary mb-2 group-hover:text-gold transition-colors">Upload Image</h3>
+<p className="text-text-muted">
   Begin with your current reality.
 </p>
                   </div>
@@ -433,12 +433,12 @@ To reality
 
                 {/* Step 2 */}
                 <div className="flex gap-6 group">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#1a1a1a] flex items-center justify-center text-white font-bold border border-white/10 shadow-lg group-hover:border-pink-500/50 group-hover:text-pink-400 transition-colors">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-bg-surface flex items-center justify-center text-text-primary font-bold border border-border-subtle shadow-lg group-hover:border-gold/50 group-hover:text-gold transition-colors">
                     2
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-pink-200 transition-colors">Pick a Visual Deck</h3>
-<p className="text-gray-400">
+                    <h3 className="text-xl font-bold text-text-primary mb-2 group-hover:text-gold transition-colors">Pick a Visual Deck</h3>
+<p className="text-text-muted">
   Choose the version that aligns with your inner vision.
 </p>
                   </div>
@@ -446,12 +446,12 @@ To reality
 
                 {/* Step 3 */}
                 <div className="flex gap-6 group">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#1a1a1a] flex items-center justify-center text-white font-bold border border-white/10 shadow-lg group-hover:border-blue-500/50 group-hover:text-blue-400 transition-colors">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-bg-surface flex items-center justify-center text-text-primary font-bold border border-border-subtle shadow-lg group-hover:border-gold/50 group-hover:text-gold transition-colors">
                     3
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-200 transition-colors">Instant Revamp</h3>
-<p className="text-gray-400">
+                    <h3 className="text-xl font-bold text-text-primary mb-2 group-hover:text-gold transition-colors">Instant Revamp</h3>
+<p className="text-text-muted">
   When vision and intention align, results appear faster.
 </p>
                   </div>
@@ -462,7 +462,7 @@ To reality
             {/* Right: Visual Mockup */}
             <div className="relative group perspective-1000">
               {/* Main Window */}
-              <div className="bg-[#0f0f11] rounded-2xl border border-white/10 p-6 shadow-2xl relative z-10 transform transition-transform duration-500 group-hover:rotate-y-2 group-hover:scale-[1.02]">
+              <div className="bg-bg-surface rounded-2xl border border-border-subtle p-6 shadow-2xl relative z-10 transform transition-transform duration-500 group-hover:rotate-y-2 group-hover:scale-[1.02]">
                 {/* Window Controls */}
                 <div className="flex items-center gap-2 mb-6">
                   <div className="w-3 h-3 rounded-full bg-[#FF5F57] hover:scale-125 transition-transform"></div>
@@ -472,24 +472,24 @@ To reality
 
                 <div className="grid grid-cols-12 gap-6">
                   {/* Left: Input Image */}
-                  <div className="col-span-5 aspect-[3/4] rounded-xl border-2 border-dashed border-white/10 bg-[#1a1a1a] flex items-center justify-center group-hover:border-white/20 transition-colors">
-                    <span className="text-gray-500 text-sm font-medium">Your Photo</span>
+                  <div className="col-span-5 aspect-[3/4] rounded-xl border-2 border-dashed border-border-subtle bg-bg-main flex items-center justify-center group-hover:border-gold/20 transition-colors">
+                    <span className="text-text-muted text-sm font-medium">Your Photo</span>
                   </div>
 
                   {/* Right: Controls */}
                   <div className="col-span-7 flex flex-col justify-between">
-                     <div className="h-4 bg-[#1a1a1a] rounded w-full mb-4 opacity-50"></div>
+                     <div className="h-4 bg-bg-main rounded w-full mb-4 opacity-50"></div>
                      
                      <div className="grid grid-cols-3 gap-3 mb-6">
-                        <div className="aspect-square rounded-lg bg-[#1a1a1a] border border-white/5 hover:bg-white/5 transition-colors cursor-pointer"></div>
-                        <div className="aspect-square rounded-lg bg-[#1a1a0f] border-2 border-purple-500 shadow-[0_0_15px_rgba(168,85,247,0.3)] relative cursor-pointer transform scale-105">
-                          <div className="absolute inset-0 bg-purple-500/10"></div>
+                        <div className="aspect-square rounded-lg bg-bg-main border border-border-subtle hover:bg-white/5 transition-colors cursor-pointer"></div>
+                        <div className="aspect-square rounded-lg bg-bg-main border-2 border-gold shadow-[0_0_15px_rgba(245,199,106,0.3)] relative cursor-pointer transform scale-105">
+                          <div className="absolute inset-0 bg-gold/10"></div>
                         </div>
-                        <div className="aspect-square rounded-lg bg-[#1a1a1a] border border-white/5 hover:bg-white/5 transition-colors cursor-pointer"></div>
+                        <div className="aspect-square rounded-lg bg-bg-main border border-border-subtle hover:bg-white/5 transition-colors cursor-pointer"></div>
                      </div>
 
                      <div className="mt-auto">
-                        <div className="w-full py-3 bg-[#8b5cf6] rounded-lg font-bold text-white text-center shadow-[0_0_20px_rgba(139,92,246,0.3)] cursor-default animate-pulse">
+                        <div className="w-full py-3 bg-gold-strong rounded-lg font-bold text-bg-surface text-center shadow-[0_0_20px_rgba(245,199,106,0.3)] cursor-default animate-pulse">
                            Revamp Now
                         </div>
                      </div>
@@ -498,21 +498,13 @@ To reality
               </div>
 
               {/* Status Badge */}
-               <div className="absolute -bottom-6 -right-6 z-20 bg-[#1a1a1a] border border-white/10 rounded-xl p-3 px-4 flex items-center gap-3 shadow-xl animate-float-delayed">
-                  <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
-                    <Icon name="CheckCircle2" className="w-4 h-4 text-green-500" />
+               <div className="absolute -bottom-6 -right-6 z-20 bg-bg-surface border border-border-subtle rounded-xl p-3 px-4 flex items-center gap-3 shadow-xl animate-float-delayed">
+                  <div className="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center">
+                    <Icon name="CheckCircle2" className="w-4 h-4 text-gold" />
                   </div>
                   <div>
-                    <div className="text-xs text-gray-500 uppercase font-bold tracking-wider">Status</div>
-                    <div className="text-white font-bold">100% Realistic</div>
-                  </div>
-               </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
+                    <div className="text-xs text-text-muted uppercase font-bold tracking-wider">Status</div>
+                    <div className="text-text-primary
       {/* Comparison Section (Why NoPromt?) */}
       <section id="why-us" className="scroll-mt-20 py-24 bg-black/80 backdrop-blur-md">
         <div className="container mx-auto px-6">
@@ -522,54 +514,62 @@ To reality
             <p className="text-xl text-gray-400">It's not a changing room, it's a tranformation room</p>
           </div>
 
-          <div className="max-w-4xl mx-auto bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-colors">
+          <div className="max-w-4xl mx-auto bg-[#0a0a0a] bordg-surface/80 backdrop-blur-md">
+        <div className="container mx-auto px-6">
+          
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-4 uppercase tracking-wide">Why NoPromt?</h2>
+            <p className="text-xl text-text-secondary">It's not a changing room, it's a tranformation room</p>
+          </div>
+
+          <div className="max-w-4xl mx-auto bg-bg-surface border border-border-subtle rounded-2xl overflow-hidden hover:border-gold/20 transition-colors">
             {/* Header */}
-            <div className="grid grid-cols-12 border-b border-white/10 bg-white/5 p-6 md:p-8">
-              <div className="col-span-4 text-gray-400 font-bold text-lg">Feature</div>
-              <div className="col-span-4 text-gray-400 font-bold text-lg text-center md:text-left pl-2">Other AI Tools</div>
-              <div className="col-span-4 text-purple-400 font-bold text-lg pl-2">NoPromt.ai</div>
+            <div className="grid grid-cols-12 border-b border-border-subtle bg-white/5 p-6 md:p-8">
+              <div className="col-span-4 text-text-muted font-bold text-lg uppercase tracking-wider">Feature</div>
+              <div className="col-span-4 text-text-muted font-bold text-lg text-center md:text-left pl-2 uppercase tracking-wider">Other AI Tools</div>
+              <div className="col-span-4 text-gold font-bold text-lg pl-2 uppercase tracking-wider">NoPromt.ai</div>
             </div>
 
             {/* Row 1 */}
-            <div className="grid grid-cols-12 border-b border-white/10 p-6 md:p-8 items-center hover:bg-white/5 transition-colors group">
-              <div className="col-span-4 text-white font-bold text-lg group-hover:text-purple-200 transition-colors">Ease of Use</div>
-              <div className="col-span-4 flex items-center gap-3 text-gray-500">
+            <div className="grid grid-cols-12 border-b border-border-subtle p-6 md:p-8 items-center hover:bg-white/5 transition-colors group">
+              <div className="col-span-4 text-text-primary font-bold text-lg group-hover:text-gold transition-colors">Ease of Use</div>
+              <div className="col-span-4 flex items-center gap-3 text-text-muted">
                 <span>Hell of a confusion</span>
               </div>
-              <div className="col-span-4 flex items-center gap-3 text-white font-bold">
+              <div className="col-span-4 flex items-center gap-3 text-text-primary font-bold">
                 <span>3 Clicks Max</span>
               </div>
             </div>
 
             {/* Row 2 */}
-            <div className="grid grid-cols-12 border-b border-white/10 p-6 md:p-8 items-center hover:bg-white/5 transition-colors group">
-              <div className="col-span-4 text-white font-bold text-lg group-hover:text-purple-200 transition-colors">Knowledge Required</div>
-              <div className="col-span-4 flex items-center gap-3 text-gray-500">
+            <div className="grid grid-cols-12 border-b border-border-subtle p-6 md:p-8 items-center hover:bg-white/5 transition-colors group">
+              <div className="col-span-4 text-text-primary font-bold text-lg group-hover:text-gold transition-colors">Knowledge Required</div>
+              <div className="col-span-4 flex items-center gap-3 text-text-muted">
 <span>Mental effort</span>
               </div>
-              <div className="col-span-4 flex items-center gap-3 text-white font-bold">
+              <div className="col-span-4 flex items-center gap-3 text-text-primary font-bold">
 <span>Intentional selection</span>
               </div>
             </div>
 
             {/* Row 3 */}
-            <div className="grid grid-cols-12 border-b border-white/10 p-6 md:p-8 items-center hover:bg-white/5 transition-colors group">
-              <div className="col-span-4 text-white font-bold text-lg group-hover:text-purple-200 transition-colors">Output Style</div>
-              <div className="col-span-4 flex items-center gap-3 text-gray-500">
+            <div className="grid grid-cols-12 border-b border-border-subtle p-6 md:p-8 items-center hover:bg-white/5 transition-colors group">
+              <div className="col-span-4 text-text-primary font-bold text-lg group-hover:text-gold transition-colors">Output Style</div>
+              <div className="col-span-4 flex items-center gap-3 text-text-muted">
 <span>Disconnected</span>
               </div>
-              <div className="col-span-4 flex items-center gap-3 text-white font-bold">
+              <div className="col-span-4 flex items-center gap-3 text-text-primary font-bold">
 <span>Believable & grounded</span>
               </div>
             </div>
 
             {/* Row 4 */}
             <div className="grid grid-cols-12 p-6 md:p-8 items-center hover:bg-white/5 transition-colors group">
-              <div className="col-span-4 text-white font-bold text-lg group-hover:text-purple-200 transition-colors">Experience</div>
-              <div className="col-span-4 flex items-center gap-3 text-gray-500">
+              <div className="col-span-4 text-text-primary font-bold text-lg group-hover:text-gold transition-colors">Experience</div>
+              <div className="col-span-4 flex items-center gap-3 text-text-muted">
                 <span>Toolbox</span>
               </div>
-              <div className="col-span-4 flex items-center gap-3 text-white font-bold">
+              <div className="col-span-4 flex items-center gap-3 text-text-primary font-bold">
                 <span>Discovery</span>
               </div>
             </div>
@@ -580,17 +580,17 @@ To reality
 
       {/* Waitlist Section */}
       <section id="join" className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-950/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gold/5"></div>
         {/* Decorative blobs */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-900/10 rounded-full blur-[100px] animate-pulse-slow"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-900/10 rounded-full blur-[100px] animate-pulse-slow"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gold/5 rounded-full blur-[100px] animate-pulse-slow"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gold/5 rounded-full blur-[100px] animate-pulse-slow"></div>
 
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <div className="inline-block p-3 rounded-full bg-brand-900/30 border border-brand-500/30 mb-6 animate-float">
-             <Icon name="Sparkles" className="w-6 h-6 text-brand-400" />
+          <div className="inline-block p-3 rounded-full bg-gold/10 border border-gold/30 mb-6 animate-float">
+             <Icon name="Sparkles" className="w-6 h-6 text-gold" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Join to evolve</h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-10">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-text-primary uppercase tracking-wide">Join to evolve</h2>
+          <p className="text-xl text-text-secondary max-w-2xl mx-auto mb-10">
   Manifestation works faster when you are surrounded by the right energy.
   The inner circle is for early believers — people who understand that clarity
   comes before results, and vision comes before reality.
@@ -605,23 +605,15 @@ To reality
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-white/5 bg-[#02040a]">
+      <footer className="py-12 border-t border-border-subtle bg-bg-main">
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
              <Logo width={24} height={24} />
-            <span className="font-semibold text-gray-300">nopromt.ai</span>
+            <span className="font-semibold text-text-muted">nopromt.ai</span>
           </div>
-          <div className="text-gray-600 text-sm">
+          <div className="text-text-muted text-sm">
             © 2025 nopromt.ai.
           </div>
           <div className="flex gap-6">
-            <a href="https://x.com/noprompt1111" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors hover:scale-110 transform">Twitter</a>
-            <a href="https://www.instagram.com/nopromt1111/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors hover:scale-110 transform">Instagram</a>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
-}
-
-export default App;
+            <a href="https://x.com/noprompt1111" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text-primary transition-colors hover:scale-110 transform">Twitter</a>
+            <a href="https://www.instagram.com/nopromt1111/" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text-primary

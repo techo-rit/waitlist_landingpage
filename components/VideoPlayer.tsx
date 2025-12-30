@@ -162,7 +162,7 @@ export default function VideoPlayer({
 
       {/* Small overlay controls for accessibility / manual play hint */}
       <button
-        className="absolute bottom-3 right-3 z-20 bg-white/90 text-black px-3 py-1 rounded-full text-xs backdrop-blur-sm shadow-sm hidden md:inline-flex items-center gap-2"
+        className="absolute bottom-3 right-3 z-20 bg-bg-surface/90 text-gold border border-gold/20 px-3 py-1 rounded-full text-xs backdrop-blur-sm shadow-sm hidden md:inline-flex items-center gap-2 hover:bg-bg-surface hover:text-gold-strong transition-colors"
         onClick={() => {
           const v = videoRef.current;
           if (!v) return;

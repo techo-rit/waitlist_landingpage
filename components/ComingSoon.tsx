@@ -26,7 +26,7 @@ interface ComingSoonProps {
 
 export const ComingSoon: React.FC<ComingSoonProps> = ({ onBack }) => {
   return (
-    <div className="min-h-screen bg-[#030712] flex items-center justify-center p-6 relative overflow-hidden">
+    <div className="min-h-screen bg-bg-main flex items-center justify-center p-6 relative overflow-hidden">
       
       {/* === Background Lava Flow === */}
       <div className="absolute inset-0 z-0 opacity-50">
@@ -67,13 +67,13 @@ export const ComingSoon: React.FC<ComingSoonProps> = ({ onBack }) => {
       </div>
 
       {/* Lava Gradient Overlay */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-t from-red-900/60 via-orange-900/40 to-black/80 mix-blend-multiply"></div>
-      <div className="absolute inset-0 z-0 bg-black/60 backdrop-blur-sm"></div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-t from-gold/20 via-bg-main/80 to-bg-main mix-blend-multiply"></div>
+      <div className="absolute inset-0 z-0 bg-bg-main/60 backdrop-blur-sm"></div>
 
       {/* Back Button */}
       <button 
         onClick={onBack}
-        className="absolute top-6 left-6 z-50 flex items-center gap-2 text-gray-400 hover:text-white transition-colors group px-4 py-2 rounded-full hover:bg-black/50 border border-transparent hover:border-white/10 backdrop-blur-md"
+        className="absolute top-6 left-6 z-50 flex items-center gap-2 text-text-muted hover:text-text-primary transition-colors group px-4 py-2 rounded-full hover:bg-bg-surface/50 border border-transparent hover:border-border-subtle backdrop-blur-md"
       >
         <Icon name="ArrowLeft" className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
         <span className="text-sm font-medium">Back to Home</span>
@@ -86,35 +86,35 @@ export const ComingSoon: React.FC<ComingSoonProps> = ({ onBack }) => {
              <Logo width={96} height={96} className="drop-shadow-2xl" />
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight drop-shadow-2xl">
+        <h1 className="text-5xl md:text-7xl font-extrabold text-text-primary mb-6 tracking-tight drop-shadow-2xl uppercase tracking-luxury">
           Arriving Soon.
         </h1>
         
-        <div className="bg-black/60 border border-white/10 rounded-3xl p-8 backdrop-blur-2xl mb-8 shadow-2xl relative overflow-hidden group">
+        <div className="bg-bg-surface/60 border border-border-subtle rounded-3xl p-8 backdrop-blur-2xl mb-8 shadow-2xl relative overflow-hidden group">
             {/* Glow effect behind card */}
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"></div>
             
             <div className="relative z-10">
-                <h2 className="text-2xl font-bold text-brand-300 mb-4 flex items-center justify-center gap-2">
-                    <Icon name="CheckCircle2" className="w-6 h-6 text-green-400" />
+                <h2 className="text-2xl font-bold text-gold mb-4 flex items-center justify-center gap-2 uppercase tracking-wide">
+                    <Icon name="CheckCircle2" className="w-6 h-6 text-gold" />
                     Spot Reserved
                 </h2>
-                <p className="text-gray-200 text-lg leading-relaxed font-medium">
+                <p className="text-text-secondary text-lg leading-relaxed font-medium">
                     Thank you for joining the <strong>nopromt.ai</strong> revolution. 
                     We are currently in a private beta and will be opening the doors to no prompt ai next week.
                 </p>
-                <div className="mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-center gap-4 text-sm text-gray-400">
-                    <span className="flex items-center gap-2 bg-green-900/30 px-3 py-1 rounded-full border border-green-500/20 text-green-400">
+                <div className="mt-8 pt-6 border-t border-border-subtle flex flex-col md:flex-row items-center justify-center gap-4 text-sm text-text-muted">
+                    <span className="flex items-center gap-2 bg-gold/10 px-3 py-1 rounded-full border border-gold/20 text-gold">
                         <Icon name="CheckCircle2" className="w-4 h-4" />
 Welcome to the Inner Circle.                    </span>
                 </div>
             </div>
             
-            <div className="absolute -bottom-12 -right-12 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl pointer-events-none group-hover:bg-purple-500/30 transition-colors"></div>
+            <div className="absolute -bottom-12 -right-12 w-48 h-48 bg-gold/20 rounded-full blur-3xl pointer-events-none group-hover:bg-gold/30 transition-colors"></div>
         </div>
         
-        <p className="text-gray-500 text-sm">
-            Questions? <a href="mailto:hello@nopromt.ai" className="text-gray-400 hover:text-white underline">Contact Support</a>
+        <p className="text-text-muted text-sm">
+            Questions? <a href="mailto:hello@nopromt.ai" className="text-text-muted hover:text-text-primary underline">Contact Support</a>
         </p>
       </div>
     </div>

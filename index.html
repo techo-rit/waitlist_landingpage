@@ -98,39 +98,51 @@
       theme: {
         extend: {
           colors: {
+            'bg-main': '#020202',
+            'bg-surface': '#111111',
+            'text-primary': '#FFFFFF',
+            'text-secondary': '#E5E5E5',
+            'text-muted': '#B3B3B3',
+            'border-subtle': '#262626',
+            'gold': '#F5C76A',
+            'gold-strong': '#F1B942',
+            'gold-soft': '#FFE7B0',
             brand: {
-              50: '#f0f9ff',
-              100: '#e0f2fe',
-              200: '#bae6fd',
-              300: '#7dd3fc',
-              400: '#38bdf8',
-              500: '#0ea5e9',
-              600: '#0284c7',
-              700: '#0369a1',
-              800: '#075985',
-              900: '#0c4a6e',
-              950: '#082f49',
+              50: '#fbf8f2',
+              100: '#f5ebd6',
+              200: '#ebdcb0',
+              300: '#e0c885',
+              400: '#F5C76A', // Core gold
+              500: '#F1B942', // Strong gold
+              600: '#d99f2b',
+              700: '#b37e1f',
+              800: '#8f621b',
+              900: '#704b18',
+              950: '#422a0a',
             },
             accent: {
-              DEFAULT: '#8b5cf6', // Violet
-              glow: '#a78bfa',
+              DEFAULT: '#F1B942', // Gold strong
+              glow: '#FFE7B0', // Gold soft
             }
           },
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'SF Pro Text', 'Segoe UI', 'sans-serif'],
+          },
+          letterSpacing: {
+            'luxury': '0.1em',
           },
           animation: {
-            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            'float': 'float 6s ease-in-out infinite',
-            'float-delayed': 'float 6s ease-in-out 3s infinite',
-            'shimmer': 'shimmer 2.5s linear infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 8s ease-in-out infinite',
+            'float-delayed': 'float 8s ease-in-out 4s infinite',
+            'shimmer': 'shimmer 3s linear infinite',
             'marquee': 'marquee 60s linear infinite',
             'marquee-reverse': 'marquee-reverse 60s linear infinite',
           },
           keyframes: {
             float: {
               '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-20px)' },
+              '50%': { transform: 'translateY(-15px)' },
             },
             shimmer: {
               '0%': { backgroundPosition: '-200% 0' },
@@ -255,24 +267,38 @@
 
 
   <style>
+    :root {
+      --bg-main: #020202;
+      --bg-surface: #111111;
+      --text-primary: #FFFFFF;
+      --text-secondary: #E5E5E5;
+      --text-muted: #B3B3B3;
+      --border-subtle: #262626;
+      --gold: #F5C76A;
+      --gold-strong: #F1B942;
+      --gold-soft: #FFE7B0;
+    }
+
     html {
       scroll-behavior: smooth;
     }
 
     body {
-      background-color: #030712;
-      color: #f9fafb;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
     }
 
     .glass-panel {
-      background: rgba(17, 24, 39, 0.7);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(17, 17, 17, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75);
     }
 
     .mesh-gradient {
-      background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.15) 0%, rgba(3, 7, 18, 0) 50%);
+      background: radial-gradient(circle at 50% 50%, rgba(245, 199, 106, 0.08) 0%, rgba(2, 2, 2, 0) 60%);
     }
 
     /* Custom Scrollbar */
@@ -281,12 +307,13 @@
     }
 
     ::-webkit-scrollbar-track {
-      background: #0f0f11;
+      background: #050505;
     }
 
     ::-webkit-scrollbar-thumb {
       background: #333;
       border-radius: 4px;
+      border: 1px solid #000;
     }
 
     ::-webkit-scrollbar-thumb:hover {
@@ -294,7 +321,11 @@
     }
 
     .text-glow {
-      text-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+      text-shadow: 0 0 20px rgba(245, 199, 106, 0.3);
+    }
+    
+    .gold-glow {
+      box-shadow: 0 0 16px rgba(245, 199, 106, 0.35);
     }
   </style>
   <script type="importmap">

@@ -53,16 +53,16 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
 
   if (status === 'success') {
     return (
-      <div className={`text-center animate-in fade-in zoom-in duration-300 ${compact ? 'p-4' : variant === 'hero' ? 'p-4 bg-black/40 rounded-2xl backdrop-blur-md border border-white/10' : 'p-8 glass-panel rounded-2xl max-w-md mx-auto'}`}>
-        <div className="w-12 h-12 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center mx-auto mb-4">
+      <div className={`text-center animate-in fade-in zoom-in duration-300 ${compact ? 'p-4' : variant === 'hero' ? 'p-4 bg-bg-surface/40 rounded-2xl backdrop-blur-md border border-border-subtle' : 'p-8 glass-panel rounded-2xl max-w-md mx-auto'}`}>
+        <div className="w-12 h-12 bg-gold/20 text-gold rounded-full flex items-center justify-center mx-auto mb-4">
           <Icon name="CheckCircle2" className="w-6 h-6" />
         </div>
-        <h3 className="text-xl font-bold text-white mb-2">Welcome aboard!</h3>
-        <p className="text-gray-300 mb-4 text-sm">
+        <h3 className="text-xl font-bold text-text-primary mb-2">Welcome aboard!</h3>
+        <p className="text-text-secondary mb-4 text-sm">
           Redirecting you to your reservation status...
         </p>
         <div className="flex justify-center">
-            <Icon name="Loader2" className="w-5 h-5 animate-spin text-brand-400" />
+            <Icon name="Loader2" className="w-5 h-5 animate-spin text-gold" />
         </div>
       </div>
     );
@@ -80,13 +80,13 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
               onChange={(e) => setEmail(e.target.value)}
               required
               disabled={status === 'loading'}
-              className="w-full bg-[#1a1d26] border border-white/10 rounded-xl px-6 py-4 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all shadow-xl disabled:opacity-60"
+              className="w-full bg-bg-surface border border-border-subtle rounded-full px-6 py-4 text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all shadow-xl disabled:opacity-60"
             />
           </div>
           <button 
             type="submit"
             disabled={status === 'loading'}
-            className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold px-8 py-4 rounded-xl hover:opacity-90 transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 whitespace-nowrap shadow-lg shadow-purple-500/20"
+            className="bg-gold-strong text-bg-surface font-bold px-8 py-4 rounded-full hover:bg-gold transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 whitespace-nowrap shadow-lg shadow-gold/20"
           >
             {status === 'loading' ? (
               <Icon name="Loader2" className="w-5 h-5 animate-spin" />
@@ -112,7 +112,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
     <div className={`w-full ${className}`}>
       <form onSubmit={handleSubmit} className="relative">
         <div className="relative flex items-center group">
-          <Icon name="Sparkles" className="absolute left-4 w-5 h-5 text-gray-400 group-focus-within:text-brand-400 transition-colors z-10" />
+          <Icon name="Sparkles" className="absolute left-4 w-5 h-5 text-text-muted group-focus-within:text-gold transition-colors z-10" />
           <input 
             type="email" 
             placeholder="email address..." 
@@ -120,12 +120,12 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
             onChange={(e) => setEmail(e.target.value)}
             required
             disabled={status === 'loading'}
-            className={`w-full pl-12 pr-36 py-4 bg-gray-900/80 border ${status === 'error' ? 'border-red-500/50' : 'border-gray-700'} rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all shadow-xl disabled:opacity-60`}
+            className={`w-full pl-12 pr-36 py-4 bg-bg-surface/80 border ${status === 'error' ? 'border-red-500/50' : 'border-border-subtle'} rounded-full text-text-primary placeholder-text-muted focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all shadow-xl disabled:opacity-60`}
           />
           <button 
             type="submit"
             disabled={status === 'loading'}
-            className="absolute right-2 top-2 bottom-2 bg-white text-black hover:bg-gray-200 font-bold px-6 rounded-full transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-2"
+            className="absolute right-2 top-2 bottom-2 bg-gold-strong text-bg-surface hover:bg-gold font-bold px-6 rounded-full transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-2"
           >
             {status === 'loading' ? <Icon name="Loader2" className="w-5 h-5 animate-spin" /> : 'Join Waitlist'}
           </button>
@@ -136,7 +136,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
              {errorMessage}
            </p>
         ) : !compact && (
-          <p className="text-center text-gray-500 text-sm mt-4">
+          <p className="text-center text-text-muted text-sm mt-4">
             Join 2,000+ creators. We launch next week.
           </p>
         )}
