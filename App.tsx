@@ -401,14 +401,6 @@ To reality
 
             {/* Left: Text Content */}
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 teg-surface/50 backdrop-blur-sm border-y border-border-subtle relative">
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[100px] pointer-events-none"></div>
-        
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-
-            {/* Left: Text Content */}
-            <div>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-text-primary uppercase tracking-wide">Revamp in 3 Clicks.</h2>
               <p className="text-text-secondary text-lg mb-12 leading-relaxed">
   Manifestation is not about effort.
@@ -504,17 +496,16 @@ To reality
                   </div>
                   <div>
                     <div className="text-xs text-text-muted uppercase font-bold tracking-wider">Status</div>
-                    <div className="text-text-primary
+                    <div className="text-text-primary">Ready</div>
+                  </div>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Comparison Section (Why NoPromt?) */}
       <section id="why-us" className="scroll-mt-20 py-24 bg-black/80 backdrop-blur-md">
-        <div className="container mx-auto px-6">
-          
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Why NoPromt?</h2>
-            <p className="text-xl text-gray-400">It's not a changing room, it's a tranformation room</p>
-          </div>
-
-          <div className="max-w-4xl mx-auto bg-[#0a0a0a] bordg-surface/80 backdrop-blur-md">
         <div className="container mx-auto px-6">
           
           <div className="text-center mb-16">
@@ -616,4 +607,12 @@ To reality
           </div>
           <div className="flex gap-6">
             <a href="https://x.com/noprompt1111" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text-primary transition-colors hover:scale-110 transform">Twitter</a>
-            <a href="https://www.instagram.com/nopromt1111/" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text-primary
+            <a href="https://www.instagram.com/nopromt1111/" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text-primary transition-colors hover:scale-110 transform">Instagram</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
