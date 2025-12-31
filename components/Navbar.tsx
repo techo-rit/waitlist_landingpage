@@ -38,6 +38,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
                     <button onClick={() => handleScroll('how-it-works')} className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors hover:scale-105 transform">How it Works</button>
                     <button onClick={onOpenWaitlist} className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors hover:scale-105 transform">Visual Decks</button>
                     <button onClick={() => handleScroll('why-us')} className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors hover:scale-105 transform">Why Us</button>
+                    <Link to="/pricing" className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors hover:scale-105 transform">Pricing</Link>
                     <button
                         onClick={onOpenWaitlist}
                         className="group relative overflow-hidden bg-white text-black px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.6)] hover:shadow-[0_0_25px_rgba(255,255,255,0.45)] hover:scale-105 border border-white/50"

@@ -6,8 +6,10 @@ This is a React + TypeScript + Vite waitlist landing page for nopromt.ai, a "vis
 ## Architecture & Key Patterns
 
 ### Component Structure
-- **[App.tsx](App.tsx)**: Single-page application with view state management (`'landing' | 'coming-soon'`). Handles navbar, hero, feature sections, and modal orchestration.
-- **Components are functional**: All use React hooks (`useState`, `useEffect`). No class components.
+- **[App.tsx](App.tsx)**: Main entry point using `react-router-dom`. Handles global layout (Navbar, Footer, Modal) and routing configuration.
+- **[LandingPage](App.tsx)**: Internal component defined in `App.tsx` handling view state (`'landing' | 'coming-soon'`) based on `localStorage`.
+- **Pages**: `pages/` directory contains static content routes (`Terms`, `Privacy`, `RefundPolicy`, `Contact`).
+- **Components**: Functional components with hooks (`useState`, `useEffect`). No class components.
 - **State Persistence**: Uses `localStorage.setItem('nopromt_signup_date')` to track user signups and conditionally show the Coming Soon view for 7 days.
 
 ### Services Architecture
@@ -36,8 +38,8 @@ GEMINI_API_KEY=<your-key>
 - **No external CSS frameworks**: Pure Tailwind with custom utilities
 - **Dark theme base**: `bg-[#030712]` or `bg-black` backgrounds throughout
 - **Glass morphism**: `.glass-panel` utility (assumed in CSS) and `backdrop-blur-*` classes
-- **Custom color palette**: Uses `brand-*` utility classes (e.g., `text-brand-400`, `bg-brand-900`) defined in Tailwind config (not in repo but referenced)
-- **Animation classes**: Custom animations like `animate-float`, `animate-marquee`, `animate-marquee-reverse` defined in [index.css](index.css) or Tailwind config
+- **Custom color palette**: Uses `brand-*` utility classes (e.g., `text-brand-400`, `bg-brand-900`) defined in Tailwind config
+- **Animation classes**: Custom animations like `animate-float`, `animate-marquee`, `animate-marquee-reverse` defined in [index.css](index.css)
 
 ### Component Styling Patterns
 ```tsx
@@ -90,24 +92,23 @@ style={{
 ### Commands
 ```bash
 npm install          # Install dependencies
-npm run dev          # Start dev server (port 3000, accessible at http://localhost:3000)
+npm run dev          # Start dev server (port 3000)
 npm run build        # Production build (output to dist/)
 npm run preview      # Preview production build locally
 ```
 
 ### Dev Server Config
-- **Port**: 3000 (hardcoded in [vite.config.ts](vite.config.ts#L7))
-- **Host**: `0.0.0.0` (accessible from dev container host)
-- **HMR**: Hot Module Replacement enabled for React component live updates
+- **Port**: 3000 (hardcoded in [vite.config.ts](vite.config.ts))
+- **Host**: `0.0.0.0`
+- **HMR**: Hot Module Replacement enabled
 
 ### Key Dependencies
-- `react@19.2.0`, `react-dom@19.2.0` (React 19 with automatic JSX transform)
-- `typescript@~5.8.2` for type safety (strict mode configured in [tsconfig.json](tsconfig.json))
-- `vite@^6.2.0` for lightning-fast dev builds and optimized production bundles
-- `lucide-react@^0.555.0` for icons (via `<Icon name="..." />` wrapper in [components/Icons.tsx](components/Icons.tsx))
-- `@supabase/supabase-js@^2.86.0` for serverless waitlist database
-- `@google/genai@^1.30.0` for Gemini AI image generation API
-- `@vitejs/plugin-react@^5.0.0` for React fast refresh
+- `react-router-dom`: Client-side routing
+- `react@19.2.0`: UI library
+- `vite@^6.2.0`: Build tool
+- `lucide-react`: Icons
+- `@supabase/supabase-js`: Backend/Database
+- `@google/genai`: AI Image Generation
 
 ## Important Conventions
 
@@ -126,9 +127,10 @@ All icons come from `lucide-react`. Valid names: `CheckCircle2`, `ArrowRight`, `
 5. Modal closes automatically after 1.5s
 
 ### Navigation Pattern
-- Smooth scroll: `element.scrollIntoView({ behavior: 'smooth' })`
-- Scroll offset: Use `scroll-mt-20` class for sections to account for fixed navbar
-- IDs for anchor links: `#how-it-works`, `#why-us`, `#join`
+- **Routing**: Uses `react-router-dom` for pages (`/`, `/terms`, `/contact`).
+- **Scroll**: `element.scrollIntoView({ behavior: 'smooth' })` for on-page navigation.
+- **Offset**: Use `scroll-mt-20` class for sections to account for fixed navbar.
+- **Anchors**: IDs used for landing page sections: `#how-it-works`, `#why-us`, `#join`.
 
 ### Philosophical Tone
 All copy emphasizes "manifestation," "clarity," "intention," and "vision → reality." When writing new content, match this tone:
@@ -152,10 +154,7 @@ All copy emphasizes "manifestation," "clarity," "intention," and "vision → rea
 Video URLs are stored as constants at the top of [App.tsx](App.tsx). Follow this naming pattern:
 ```tsx
 const LOWERWEAR_MP4 = "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/landingpage/fitit_lowerwear.mp4";
-const LOWERWEAR_WEBM = "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/landingpage/fitit_lowerwear.webm";
-const LOWERWEAR_POSTER = "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/landingpage/fitit_lowerwear_poster.webp";
 ```
-All videos use Supabase storage base: `https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/landingpage/`
 
 ### Component Prop Patterns
 - `onSignupSuccess?: () => void` for success callbacks
@@ -169,15 +168,9 @@ All videos use Supabase storage base: `https://ducufhqcxdhqcuhrpnrb.supabase.co/
 ```tsx
 const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 const [errorMessage, setErrorMessage] = useState('');
-
-// Error handling includes:
-// - Supabase validation errors → display error.message
-// - Network errors → "Network error. Please try again."
-// - Timeout after 1.5s for success state to show success UI
 ```
 
 ### Gemini AI Integration Error Handling
 - `generateRemix()` uses try-catch for API failures
 - Validates file MIME type before conversion with `fileToGenerativePart()`
 - Gracefully handles `window.aistudio` API key selection (playground environment)
-- Model used: `gemini-3-pro-image-preview` for image input + text prompts

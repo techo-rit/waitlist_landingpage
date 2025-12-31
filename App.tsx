@@ -12,6 +12,7 @@ import { Terms } from './pages/Terms';
 import { Privacy } from './pages/Privacy';
 import { RefundPolicy } from './pages/RefundPolicy';
 import { Contact } from './pages/Contact';
+import { Pricing } from './pages/Pricing';
 
 /* ================================
    VIDEO URL CONFIG
@@ -593,6 +594,7 @@ function App() {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/pricing" element={<Pricing />} />
         </Routes>
 
         <Footer />
