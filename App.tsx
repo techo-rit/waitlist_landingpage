@@ -281,16 +281,17 @@ function LandingPage({ onOpenWaitlist }: { onOpenWaitlist: () => void }) {
 
           </div>
 
-          <button
-            onClick={onOpenWaitlist}
+         {/* UPDATED BUTTON: "Launch App" connecting to app.nopromt.ai */}
+          <a
+            href="https://app.nopromt.ai/"
             className="group relative overflow-hidden bg-gold-strong text-bg-surface text-lg font-bold px-10 py-4 rounded-full transition-all hover:scale-105 shadow-lg shadow-gold/30 flex items-center gap-2"
           >
             {/* Shimmer effect */}
             <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent z-10"></div>
 
-            <span className="relative z-20">Get Started</span>
+            <span className="relative z-20">Launch App</span>
             <Icon name="ArrowRight" className="w-5 h-5 relative z-20 group-hover:translate-x-1 transition-transform" />
-          </button>
+          </a>
         </div>
       </header>
 
