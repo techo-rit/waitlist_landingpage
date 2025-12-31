@@ -126,9 +126,9 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
             onChange={(e) => setEmail(e.target.value)}
             required
             disabled={status === 'loading'}
-            // CHANGE 1: Reduced pr-36 to pr-28. 
+            // CHANGE 1: Reduced pr-36 to pr-10. 
             // This gives more space for the email text on mobile while still preventing overlap with the button.
-            className={`w-full pl-12 pr-28 py-4 bg-bg-surface/80 border ${status === 'error' ? 'border-red-500/50' : 'border-border-subtle'
+            className={`w-full pl-12 pr-10 py-4 bg-bg-surface/80 border ${status === 'error' ? 'border-red-500/50' : 'border-border-subtle'
               } rounded-full text-text-primary placeholder-text-muted focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all shadow-xl disabled:opacity-60`}
           />
 
