@@ -7,6 +7,7 @@ import { Icon, Logo } from './components/Icons';
 import VideoPlayer from "./components/VideoPlayer";
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { ScrollToTop } from './components/ScrollToTop';
 import { Terms } from './pages/Terms';
 import { Privacy } from './pages/Privacy';
 import { RefundPolicy } from './pages/RefundPolicy';
@@ -575,6 +576,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-bg-main text-text-primary font-sans overflow-x-hidden relative">
         <WaitlistModal
           isOpen={isWaitlistOpen}
