@@ -247,10 +247,10 @@ function LandingPage({ onOpenWaitlist }: { onOpenWaitlist: () => void }) {
         <div className="container mx-auto px-6 text-center relative z-30 flex flex-col items-center">
 
           <h1
-            className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-text-primary mb-8 leading-[0.9] uppercase tracking-luxury"
+            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-text-primary mb-8 leading-[0.9] uppercase tracking-luxury"
             style={{
               textShadow: `
-      0 0 20px rgba(245, 199, 106, 0.3)
+      0 0 40px rgba(245, 199, 106, 0.37)
     `
             }}
           >

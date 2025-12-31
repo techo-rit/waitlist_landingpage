@@ -9,7 +9,7 @@ export const Pricing = () => {
 
       {/* Hero Section */}
       <div className="relative z-10 max-w-4xl mx-auto text-center mb-16 md:mb-24">
-        <h1 className="text-4xl md:text-6xl font-serif font-bold text-text-primary mb-4 tracking-tight">
+        <h1 className="text-4xl md:text-6xl font-bold text-text-primary mb-4 tracking-tight">
           UNLOCK YOUR POTENTIAL 
         </h1>
         <p className="text-xl md:text-2xl text-gold font-serif italic opacity-80">
@@ -57,7 +57,7 @@ export const Pricing = () => {
                 </li>
               </ul>
 
-              <button className="w-full py-4 rounded-xl bg-white text-black font-bold text-lg transition-transform duration-200 hover:-translate-y-1 shadow-[0_0_20px_rgba(255,255,255,0.6)] hover:shadow-lg active:scale-95">
+              <button className="w-full py-4 rounded-xl bg-white text-black font-bold text-lg shadow-[0_0_20px_rgba(245,199,106,0.3)] transition-all duration-200 hover:-translate-y-1  active:scale-95 relative overflow-hidden">
                 Get Essentials
               </button>
             </div>
@@ -113,7 +113,7 @@ export const Pricing = () => {
                 </li>
               </ul>
 
-              <button className="w-full py-4 rounded-xl bg-gold text-black font-bold text-lg shadow-[0_0_20px_rgba(245,199,106,0.6)] transition-all duration-200 hover:-translate-y-1  active:scale-95 relative overflow-hidden">
+              <button className="w-full py-4 rounded-xl bg-gold text-black font-bold text-lg shadow-[0_0_20px_rgba(245,199,106,0.3)] transition-all duration-200 hover:-translate-y-1  active:scale-95 relative overflow-hidden">
                 <span className="relative z-10">Upgrade to Ultimate</span>
                 <div className="absolute inset-0 bg-white/20 translate-y-full hover:translate-y-0 transition-transform duration-300" />
               </button>
