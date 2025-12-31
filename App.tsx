@@ -283,12 +283,12 @@ function LandingPage({ onOpenWaitlist }: { onOpenWaitlist: () => void }) {
 
           <button
             onClick={onOpenWaitlist}
-            className="group relative overflow-hidden bg-white text-black text-lg font-medium px-10 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] shadow-[0_0_15px_rgba(255,255,255,0.15)] flex items-center gap-2 border border-white/50"
+            className="group relative overflow-hidden bg-gold-strong text-bg-surface text-lg font-bold px-10 py-4 rounded-full transition-all hover:scale-105 shadow-lg shadow-gold/30 flex items-center gap-2"
           >
-            {/* Shimmer effect (Updated to subtle silver for white background) */}
-            <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-gray-200/50 to-transparent z-10"></div>
+            {/* Shimmer effect */}
+            <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent z-10"></div>
 
-            <span className="relative z-20 tracking-wide">Get Started</span>
+            <span className="relative z-20">Get Started</span>
             <Icon name="ArrowRight" className="w-5 h-5 relative z-20 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>

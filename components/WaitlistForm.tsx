@@ -9,11 +9,11 @@ interface WaitlistFormProps {
   variant?: 'default' | 'hero';
 }
 
-export const WaitlistForm: React.FC<WaitlistFormProps> = ({ 
-  onSignupSuccess, 
-  className = "", 
+export const WaitlistForm: React.FC<WaitlistFormProps> = ({
+  onSignupSuccess,
+  className = "",
   compact = false,
-  variant = 'default' 
+  variant = 'default'
 }) => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -62,7 +62,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
           Redirecting you to your reservation status...
         </p>
         <div className="flex justify-center">
-            <Icon name="Loader2" className="w-5 h-5 animate-spin text-gold" />
+          <Icon name="Loader2" className="w-5 h-5 animate-spin text-gold" />
         </div>
       </div>
     );
@@ -73,9 +73,9 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
       <div className={`w-full max-w-xl mx-auto ${className}`}>
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
           <div className="flex-1">
-             <input 
-              type="email" 
-              placeholder="Email address" 
+            <input
+              type="email"
+              placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -83,7 +83,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
               className="w-full bg-bg-surface border border-border-subtle rounded-full px-6 py-4 text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all shadow-xl disabled:opacity-60"
             />
           </div>
-          <button 
+          <button
             type="submit"
             disabled={status === 'loading'}
             className="bg-gold-strong text-bg-surface font-bold px-8 py-4 rounded-full hover:bg-gold transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 whitespace-nowrap shadow-lg shadow-gold/20"
@@ -99,10 +99,10 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
           </button>
         </form>
         {status === 'error' && (
-           <p className="mt-3 text-red-400 text-sm flex items-center gap-2">
-             <Icon name="XCircle" className="w-4 h-4" />
-             {errorMessage}
-           </p>
+          <p className="mt-3 text-red-400 text-sm flex items-center gap-2">
+            <Icon name="XCircle" className="w-4 h-4" />
+            {errorMessage}
+          </p>
         )}
       </div>
     );
@@ -113,34 +113,34 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
       <form onSubmit={handleSubmit} className="relative">
         <div className="relative flex items-center group">
           <Icon name="Sparkles" className="absolute left-4 w-5 h-5 text-text-muted group-focus-within:text-gold transition-colors z-10" />
-          <input 
-            type="email" 
-            placeholder="email address..." 
+          <input
+            type="email"
+            placeholder="email address..."
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
             disabled={status === 'loading'}
             className={`w-full pl-12 pr-36 py-4 bg-bg-surface/80 border ${status === 'error' ? 'border-red-500/50' : 'border-border-subtle'} rounded-full text-text-primary placeholder-text-muted focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all shadow-xl disabled:opacity-60`}
           />
-          <button 
-  type="submit"
-  disabled={status === 'loading'}
-  className="group absolute right-2 top-2 bottom-2 overflow-hidden bg-white text-black font-medium px-6 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] shadow-[0_0_10px_rgba(255,255,255,0.1)] border border-white/50 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
->
-  {/* Shimmer effect (Silver sheen) */}
-  <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-gray-200/50 to-transparent z-10"></div>
-  
-  {/* Content (Wrapped to sit above shimmer) */}
-  <span className="relative z-20 flex items-center gap-2">
-    {status === 'loading' ? <Icon name="Loader2" className="w-4 h-4 animate-spin" /> : 'Join'}
-  </span>
-</button>
+          <button
+            type="submit"
+            disabled={status === 'loading'}
+            className="group absolute right-2 top-2 bottom-2 overflow-hidden bg-white text-black font-medium px-6 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,255,0.45)] border border-white/50 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          >
+            {/* Shimmer effect (Silver sheen) */}
+            <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-gray-200/50 to-transparent z-10"></div>
+
+            {/* Content */}
+            <span className="relative z-20 flex items-center gap-2">
+              {status === 'loading' ? <Icon name="Loader2" className="w-4 h-4 animate-spin" /> : 'Join'}
+            </span>
+          </button>
         </div>
-        
+
         {status === 'error' ? (
-           <p className="text-center text-red-400 text-sm mt-4 animate-in fade-in slide-in-from-top-2">
-             {errorMessage}
-           </p>
+          <p className="text-center text-red-400 text-sm mt-4 animate-in fade-in slide-in-from-top-2">
+            {errorMessage}
+          </p>
         ) : !compact && (
           <p className="text-center text-text-muted text-sm mt-4">
             Join the Innercircle to access exclusive content and updates.
