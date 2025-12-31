@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { WaitlistForm } from './components/WaitlistForm';
 import { WaitlistModal } from './components/WaitlistModal';
 import { ComingSoon } from './components/ComingSoon';
 import { Icon, Logo } from './components/Icons';
 import VideoPlayer from "./components/VideoPlayer";
+import { Navbar } from './components/Navbar';
+import { Footer } from './components/Footer';
+import { Terms } from './pages/Terms';
+import { Privacy } from './pages/Privacy';
+import { RefundPolicy } from './pages/RefundPolicy';
+import { Contact } from './pages/Contact';
 
 /* ================================
    VIDEO URL CONFIG
@@ -52,13 +59,10 @@ const BACKGROUND_TILES = [
 // Helper to duplicate array for seamless looping
 const MARQUEE_TILES = [...BACKGROUND_TILES, ...BACKGROUND_TILES, ...BACKGROUND_TILES];
 
-
-
-function App() {
+function LandingPage({ onOpenWaitlist }: { onOpenWaitlist: () => void }) {
   const [loaded, setLoaded] = useState(false);
   const [view, setView] = useState<'landing' | 'coming-soon'>('landing');
   const [isLoading, setIsLoading] = useState(true);
-  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem('nopromt_signup_date');
@@ -71,53 +75,15 @@ function App() {
 
   const handleSignupSuccess = () => {
     localStorage.setItem("nopromt_signup_date", new Date().toISOString());
-    setIsWaitlistOpen(false);
     setView("coming-soon");
     window.scrollTo(0, 0);
   };
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-  
+
   if (isLoading) return null;
   if (view === "coming-soon") return <ComingSoon onBack={() => setView("landing")} />;
 
   return (
-    <div className="min-h-screen bg-bg-main text-text-primary font-sans overflow-x-hidden relative">
-
-      <WaitlistModal
-        isOpen={isWaitlistOpen}
-        onClose={() => setIsWaitlistOpen(false)}
-        onSignupSuccess={handleSignupSuccess}
-      />
-
-      {/* Navbar */}
-      <nav className="w-full z-50 bg-bg-main/80 backdrop-blur-md border-b border-border-subtle">
-        <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <div className="relative flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
-                 <Logo width={32} height={32} />
-            </div>
-            <span className="text-xl font-bold tracking-tight text-text-primary group-hover:text-gold transition-colors uppercase tracking-widest">nopromt.ai</span>
-          </div>
-          
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#how-it-works" onClick={(e) => { e.preventDefault(); scrollToSection('how-it-works'); }} className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors hover:scale-105 transform">How it Works</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); setIsWaitlistOpen(true); }} className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors hover:scale-105 transform">Visual Decks</a>
-            <a href="#why-us" onClick={(e) => { e.preventDefault(); scrollToSection('why-us'); }} className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors hover:scale-105 transform">Why Us</a>
-            <button 
-              onClick={() => setIsWaitlistOpen(true)}
-              className="relative overflow-hidden bg-gold-strong text-bg-surface px-6 py-2.5 rounded-full text-sm font-bold hover:bg-gold transition-all shadow-[0_0_15px_rgba(245,199,106,0.15)] hover:shadow-[0_0_25px_rgba(245,199,106,0.4)] hover:scale-105"
-            >
-              Get Free Access
-            </button>
-          </div>
-        </div>
-      </nav>
-
+    <>
       {/* Hero Section */}
       <header className="relative min-h-[90vh] flex flex-col justify-center items-center pt-20 pb-12 overflow-hidden">
         
@@ -315,7 +281,7 @@ To reality
           </div>
 
           <button 
-            onClick={() => setIsWaitlistOpen(true)}
+            onClick={onOpenWaitlist}
             className="group relative overflow-hidden bg-gold-strong text-bg-surface text-lg font-bold px-10 py-4 rounded-full transition-all hover:scale-105 shadow-lg shadow-gold/30 flex items-center gap-2"
           >
             {/* Shimmer effect */}
@@ -594,24 +560,41 @@ To reality
           </div>
         </div>
       </section>
+    </>
+  );
+}
 
-      {/* Footer */}
-      <footer className="py-12 border-t border-border-subtle bg-bg-main">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-2">
-             <Logo width={24} height={24} />
-            <span className="font-semibold text-text-muted">nopromt.ai</span>
-          </div>
-          <div className="text-text-muted text-sm">
-            © 2025 nopromt.ai.
-          </div>
-          <div className="flex gap-6">
-            <a href="https://x.com/noprompt1111" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text-primary transition-colors hover:scale-110 transform">Twitter</a>
-            <a href="https://www.instagram.com/nopromt1111/" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text-primary transition-colors hover:scale-110 transform">Instagram</a>
-          </div>
-        </div>
-      </footer>
-    </div>
+function App() {
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+
+  const handleSignupSuccess = () => {
+    localStorage.setItem("nopromt_signup_date", new Date().toISOString());
+    setIsWaitlistOpen(false);
+    window.location.reload(); // Simple reload to trigger the coming soon check in LandingPage
+  };
+
+  return (
+    <Router>
+      <div className="min-h-screen bg-bg-main text-text-primary font-sans overflow-x-hidden relative">
+        <WaitlistModal
+          isOpen={isWaitlistOpen}
+          onClose={() => setIsWaitlistOpen(false)}
+          onSignupSuccess={handleSignupSuccess}
+        />
+
+        <Navbar onOpenWaitlist={() => setIsWaitlistOpen(true)} />
+
+        <Routes>
+          <Route path="/" element={<LandingPage onOpenWaitlist={() => setIsWaitlistOpen(true)} />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/refund-policy" element={<RefundPolicy />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

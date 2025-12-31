@@ -90,20 +90,24 @@ style={{
 ### Commands
 ```bash
 npm install          # Install dependencies
-npm run dev          # Start dev server on port 3000 (see vite.config.ts)
-npm run build        # Production build
-npm run preview      # Preview production build
+npm run dev          # Start dev server (port 3000, accessible at http://localhost:3000)
+npm run build        # Production build (output to dist/)
+npm run preview      # Preview production build locally
 ```
 
 ### Dev Server Config
 - **Port**: 3000 (hardcoded in [vite.config.ts](vite.config.ts#L7))
-- **Host**: `0.0.0.0` (dev container accessible)
+- **Host**: `0.0.0.0` (accessible from dev container host)
+- **HMR**: Hot Module Replacement enabled for React component live updates
 
 ### Key Dependencies
-- `react@19.2.0`, `react-dom@19.2.0` (React 19)
-- `lucide-react` for icons (via `<Icon name="..." />` wrapper in [Icons.tsx](components/Icons.tsx))
-- `@supabase/supabase-js` for waitlist storage
-- `@google/genai` for AI image generation
+- `react@19.2.0`, `react-dom@19.2.0` (React 19 with automatic JSX transform)
+- `typescript@~5.8.2` for type safety (strict mode configured in [tsconfig.json](tsconfig.json))
+- `vite@^6.2.0` for lightning-fast dev builds and optimized production bundles
+- `lucide-react@^0.555.0` for icons (via `<Icon name="..." />` wrapper in [components/Icons.tsx](components/Icons.tsx))
+- `@supabase/supabase-js@^2.86.0` for serverless waitlist database
+- `@google/genai@^1.30.0` for Gemini AI image generation API
+- `@vitejs/plugin-react@^5.0.0` for React fast refresh
 
 ## Important Conventions
 
@@ -145,15 +149,35 @@ All copy emphasizes "manifestation," "clarity," "intention," and "vision → rea
 - For build-time injection: add to [vite.config.ts](vite.config.ts) `define` object
 
 ### Updating Video Assets
-Replace URLs at top of [App.tsx](App.tsx) following naming convention:
+Video URLs are stored as constants at the top of [App.tsx](App.tsx). Follow this naming pattern:
 ```tsx
-const FEATURE_MP4 = "https://...";
-const FEATURE_WEBM = "https://...";
-const FEATURE_POSTER = "https://...";
+const LOWERWEAR_MP4 = "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/landingpage/fitit_lowerwear.mp4";
+const LOWERWEAR_WEBM = "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/landingpage/fitit_lowerwear.webm";
+const LOWERWEAR_POSTER = "https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/landingpage/fitit_lowerwear_poster.webp";
 ```
+All videos use Supabase storage base: `https://ducufhqcxdhqcuhrpnrb.supabase.co/storage/v1/object/public/assets/landingpage/`
 
 ### Component Prop Patterns
 - `onSignupSuccess?: () => void` for success callbacks
 - `className?: string` for style overrides
 - `variant?: 'default' | 'hero'` for component variants
 - `compact?: boolean` for size toggles
+
+## Async & Error Handling Patterns
+
+### Form Submission Error Handling (WaitlistForm)
+```tsx
+const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+const [errorMessage, setErrorMessage] = useState('');
+
+// Error handling includes:
+// - Supabase validation errors → display error.message
+// - Network errors → "Network error. Please try again."
+// - Timeout after 1.5s for success state to show success UI
+```
+
+### Gemini AI Integration Error Handling
+- `generateRemix()` uses try-catch for API failures
+- Validates file MIME type before conversion with `fileToGenerativePart()`
+- Gracefully handles `window.aistudio` API key selection (playground environment)
+- Model used: `gemini-3-pro-image-preview` for image input + text prompts
