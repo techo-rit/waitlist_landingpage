@@ -53,7 +53,7 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose, o
         <WaitlistForm onSignupSuccess={onSignupSuccess} compact={true} />
         
         <p className="text-center text-xs text-gray-600 mt-6">
-           No BS. Unsubscribe anytime.
+           Innercircle members get free access because we believe in Karma.
         </p>
       </div>
     </div>

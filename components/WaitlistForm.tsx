@@ -92,7 +92,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
               <Icon name="Loader2" className="w-5 h-5 animate-spin" />
             ) : (
               <>
-                Join Waitlist 
+                Join
                 <Icon name="ArrowRight" className="w-5 h-5" />
               </>
             )}
@@ -123,12 +123,18 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
             className={`w-full pl-12 pr-36 py-4 bg-bg-surface/80 border ${status === 'error' ? 'border-red-500/50' : 'border-border-subtle'} rounded-full text-text-primary placeholder-text-muted focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all shadow-xl disabled:opacity-60`}
           />
           <button 
-            type="submit"
-            disabled={status === 'loading'}
-            className="absolute right-2 top-2 bottom-2 bg-gold-strong text-bg-surface hover:bg-gold font-bold px-6 rounded-full transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-2"
-          >
-            {status === 'loading' ? <Icon name="Loader2" className="w-5 h-5 animate-spin" /> : 'Join Waitlist'}
-          </button>
+  type="submit"
+  disabled={status === 'loading'}
+  className="group absolute right-2 top-2 bottom-2 overflow-hidden bg-white text-black font-medium px-6 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] shadow-[0_0_10px_rgba(255,255,255,0.1)] border border-white/50 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+>
+  {/* Shimmer effect (Silver sheen) */}
+  <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-gray-200/50 to-transparent z-10"></div>
+  
+  {/* Content (Wrapped to sit above shimmer) */}
+  <span className="relative z-20 flex items-center gap-2">
+    {status === 'loading' ? <Icon name="Loader2" className="w-4 h-4 animate-spin" /> : 'Join'}
+  </span>
+</button>
         </div>
         
         {status === 'error' ? (
@@ -137,7 +143,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
            </p>
         ) : !compact && (
           <p className="text-center text-text-muted text-sm mt-4">
-            Join 2,000+ creators. We launch next week.
+            Join the Innercircle to access exclusive content and updates.
           </p>
         )}
       </form>
