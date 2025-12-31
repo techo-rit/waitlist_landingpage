@@ -10,10 +10,10 @@ export const Pricing = () => {
       {/* Hero Section */}
       <div className="relative z-10 max-w-4xl mx-auto text-center mb-16 md:mb-24">
         <h1 className="text-4xl md:text-6xl font-serif font-bold text-text-primary mb-4 tracking-tight">
-          Unlock Your Potential
+          UNLOCK YOUR POTENTIAL 
         </h1>
-        <p className="text-xl md:text-2xl text-text-secondary font-serif italic opacity-80">
-          Rich thinking starts with: “What's in there?”
+        <p className="text-xl md:text-2xl text-gold font-serif italic opacity-80">
+          Rich thinking starts with “What's in there?”
         </p>
       </div>
 
@@ -32,7 +32,7 @@ export const Pricing = () => {
                 </span>
               </div>
 
-              <h3 className="text-2xl font-serif text-text-primary mb-2">Essentials</h3>
+              <h3 className="text-2xl uppercase font-serif text-text-primary mb-2">Essentials</h3>
               <div className="flex items-baseline gap-1 mb-8">
                 <span className="text-4xl font-bold text-text-primary">$1.55</span>
                 <span className="text-text-muted">/ month</span>
@@ -40,24 +40,24 @@ export const Pricing = () => {
 
               <ul className="space-y-4 mb-8 flex-1">
                 <li className="flex items-start gap-3 text-text-secondary">
-                  <Icon name="CheckCircle2" className="w-5 h-5 text-text-muted mt-0.5" />
+                  <Icon name="CheckCircle2" className="w-5 h-5 text-gold mt-0.5" />
                   <span>20 creations per month</span>
                 </li>
                 <li className="flex items-start gap-3 text-text-secondary">
-                  <Icon name="CheckCircle2" className="w-5 h-5 text-text-muted mt-0.5" />
+                  <Icon name="CheckCircle2" className="w-5 h-5 text-gold mt-0.5" />
                   <span>100% refund of unused creations anytime</span>
                 </li>
                 <li className="flex items-start gap-3 text-text-secondary">
-                  <Icon name="CheckCircle2" className="w-5 h-5 text-text-muted mt-0.5" />
+                  <Icon name="CheckCircle2" className="w-5 h-5 text-gold mt-0.5" />
                   <span>Be a part of the Innercircle to manifest</span>
                 </li>
                 <li className="flex items-start gap-3 text-text-secondary">
-                  <Icon name="CheckCircle2" className="w-5 h-5 text-text-muted mt-0.5" />
+                  <Icon name="CheckCircle2" className="w-5 h-5 text-gold mt-0.5" />
                   <span>Standard support</span>
                 </li>
               </ul>
 
-              <button className="w-full py-4 rounded-xl bg-white text-black font-bold text-lg transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg active:scale-95">
+              <button className="w-full py-4 rounded-xl bg-white text-black font-bold text-lg transition-transform duration-200 hover:-translate-y-1 shadow-[0_0_20px_rgba(255,255,255,0.6)] hover:shadow-lg active:scale-95">
                 Get Essentials
               </button>
             </div>
@@ -84,7 +84,7 @@ export const Pricing = () => {
                 </span>
               </div>
 
-              <h3 className="text-2xl font-serif text-gold mb-2">Ultimate</h3>
+              <h3 className="text-2xl uppercase font-serif text-gold mb-2">Ultimate</h3>
               <div className="flex items-baseline gap-1 mb-8">
                 <span className="text-4xl font-bold text-text-primary">$9</span>
                 <span className="text-text-muted">/ month</span>
@@ -113,7 +113,7 @@ export const Pricing = () => {
                 </li>
               </ul>
 
-              <button className="w-full py-4 rounded-xl bg-gold text-black font-bold text-lg shadow-[0_0_20px_rgba(245,199,106,0.3)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(245,199,106,0.5)] active:scale-95 relative overflow-hidden">
+              <button className="w-full py-4 rounded-xl bg-gold text-black font-bold text-lg shadow-[0_0_20px_rgba(245,199,106,0.6)] transition-all duration-200 hover:-translate-y-1  active:scale-95 relative overflow-hidden">
                 <span className="relative z-10">Upgrade to Ultimate</span>
                 <div className="absolute inset-0 bg-white/20 translate-y-full hover:translate-y-0 transition-transform duration-300" />
               </button>
