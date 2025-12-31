@@ -110,9 +110,15 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
 
   return (
     <div className={`w-full ${className}`}>
-      <form onSubmit={handleSubmit} className="relative">
-        <div className="relative flex items-center group">
-          <Icon name="Sparkles" className="absolute left-4 w-5 h-5 text-text-muted group-focus-within:text-gold transition-colors z-10" />
+      <form onSubmit={handleSubmit} className="relative w-full">
+        <div className="relative flex items-center group w-full">
+          {/* Icon */}
+          <Icon
+            name="Sparkles"
+            className="absolute left-4 w-5 h-5 text-text-muted group-focus-within:text-gold transition-colors z-10"
+          />
+
+          {/* Input Field */}
           <input
             type="email"
             placeholder="email address..."
@@ -120,14 +126,21 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
             onChange={(e) => setEmail(e.target.value)}
             required
             disabled={status === 'loading'}
-            className={`w-full pl-12 pr-36 py-4 bg-bg-surface/80 border ${status === 'error' ? 'border-red-500/50' : 'border-border-subtle'} rounded-full text-text-primary placeholder-text-muted focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all shadow-xl disabled:opacity-60`}
+            // CHANGE 1: Reduced pr-36 to pr-28. 
+            // This gives more space for the email text on mobile while still preventing overlap with the button.
+            className={`w-full pl-12 pr-28 py-4 bg-bg-surface/80 border ${status === 'error' ? 'border-red-500/50' : 'border-border-subtle'
+              } rounded-full text-text-primary placeholder-text-muted focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all shadow-xl disabled:opacity-60`}
           />
+
+          {/* Submit Button */}
           <button
             type="submit"
             disabled={status === 'loading'}
-            className="group absolute right-2 top-2 bottom-2 overflow-hidden bg-white text-black font-medium px-6 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,255,0.45)] border border-white/50 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            // CHANGE 2: Added 'w-fit' and 'whitespace-nowrap'.
+            // This ensures the button width is exactly based on the content ("Join" or Loader).
+            className="group absolute right-2 top-2 bottom-2 w-fit whitespace-nowrap overflow-hidden bg-white text-black font-medium px-6 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,255,0.45)] border border-white/50 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
-            {/* Shimmer effect (Silver sheen) */}
+            {/* Shimmer effect */}
             <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-gray-200/50 to-transparent z-10"></div>
 
             {/* Content */}
