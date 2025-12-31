@@ -86,7 +86,7 @@ function LandingPage({ onOpenWaitlist }: { onOpenWaitlist: () => void }) {
   return (
     <>
       {/* Hero Section */}
-      <header className="relative min-h-[90vh] flex flex-col justify-center items-center pt-20 pb-12 overflow-hidden">
+      <header className="relative min-h-[90vh] flex flex-col justify-center items-center pt-40 pb-12 overflow-hidden">
 
         {/* === Foreground Floating Templates === */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center">
