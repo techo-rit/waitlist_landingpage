@@ -250,7 +250,7 @@ function LandingPage({ onOpenWaitlist }: { onOpenWaitlist: () => void }) {
             className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-text-primary mb-8 leading-[0.9] uppercase tracking-luxury"
             style={{
               textShadow: `
-      0 0 40px rgba(245, 199, 106, 0.37)
+      0 0 40px rgba(245, 199, 106, 0.32)
     `
             }}
           >
