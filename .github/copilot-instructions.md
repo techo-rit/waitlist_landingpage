@@ -1,7 +1,7 @@
 # AI Agent Instructions for nopromt.ai Waitlist Landing Page
 
 ## Project Overview
-This is a React + TypeScript + Vite waitlist landing page for nopromt.ai, a "visual manifestation" platform. The app allows users to upload images and apply style transformations through "Visual Decks". The design philosophy emphasizes intention, clarity, and manifestation.
+This is a React + TypeScript + Vite waitlist landing page for nopromt.ai, a "visual manifestation" platform. The current focus is on capturing user interest via a waitlist form backed by Supabase. The design philosophy emphasizes intention, clarity, and manifestation.
 
 ## Architecture & Key Patterns
 
@@ -10,19 +10,17 @@ This is a React + TypeScript + Vite waitlist landing page for nopromt.ai, a "vis
 - **[LandingPage](App.tsx)**: Internal component managing view states (`'landing' | 'coming-soon'`) based on `localStorage` persistence.
 - **Pages**: Static content routes in `pages/` (`Terms`, `Privacy`, `RefundPolicy`, `Contact`).
 - **Components**: Functional components using hooks. Located in `components/`.
+  - **[WaitlistForm.tsx](components/WaitlistForm.tsx)**: Handles Supabase insertions and UI states (loading, success, error).
 - **State Persistence**: `localStorage.setItem('nopromt_signup_date')` tracks signups to conditionally show the "Coming Soon" view.
 
 ### Services Architecture
-- **[supabaseClient.ts](supabaseClient.ts)**: Singleton Supabase client. Uses `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`.
-- **[services/geminiService.ts](services/geminiService.ts)**: Handles AI image generation.
-  - **Library**: `@google/genai`
-  - **Model**: `gemini-3-pro-image-preview`
-  - **Key**: Uses `process.env.API_KEY` (injected via Vite config).
+- **[supabaseClient.ts](supabaseClient.ts)**: Singleton Supabase client.
+  - **Config**: Uses `import.meta.env.VITE_SUPABASE_URL` and `import.meta.env.VITE_SUPABASE_ANON_KEY`.
+  - **Usage**: Direct database calls (e.g., `.from("waitlist").insert(...)`).
 
 ### Environment Variables Pattern
-**Critical**: This project uses a hybrid environment variable pattern:
-1. **Standard Vite**: `import.meta.env.VITE_*` for Supabase config.
-2. **Build-Time Injection**: `process.env.API_KEY` and `process.env.GEMINI_API_KEY` are injected via `define` in **[vite.config.ts](vite.config.ts)**.
+- **Standard Vite**: Use `import.meta.env.VITE_*` for all client-side environment variables.
+- **No Process Env**: Do not use `process.env` in client code.
 
 ## Styling Conventions
 
@@ -32,7 +30,7 @@ This is a React + TypeScript + Vite waitlist landing page for nopromt.ai, a "vis
   - **Colors**: Custom `brand-*`, `gold-*`, `bg-main` defined here.
   - **Fonts**: `Inter` and `Playfair Display`.
   - **Animations**: Custom `float`, `shimmer`, `marquee` keyframes defined here.
-- **No Build Step**: There is NO `tailwind.config.js` or PostCSS build step for Tailwind. Edit `index.html` to change the theme.
+- **No Build Step**: There is NO `tailwind.config.js` or PostCSS build step for Tailwind. **Edit `index.html` to change the theme.**
 
 ### Common Patterns
 - **Glass Morphism**: `bg-black/60 backdrop-blur-* border-white/10`.
@@ -58,7 +56,7 @@ This is a React + TypeScript + Vite waitlist landing page for nopromt.ai, a "vis
 
 ### Key Files
 - **[index.html](index.html)**: **Primary config file** for Tailwind, meta tags, and CDN scripts.
-- **[vite.config.ts](vite.config.ts)**: Handles env var injection (`process.env`).
+- **[vite.config.ts](vite.config.ts)**: Vite configuration.
 - **[constants.ts](constants.ts)**: Configuration for "Visual Decks" (styles, prompts, icons).
 
 ## Philosophical Tone
