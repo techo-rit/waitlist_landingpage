@@ -86,10 +86,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
 
                 {/* Mobile Menu Toggle */}
                 <button 
-                    className="md:hidden p-2 text-text-primary hover:text-gold transition-colors z-50 relative"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    aria-label="Toggle menu"
-                >
+    className="md:hidden p-2 text-text-primary hover:text-gold transition-colors z-50 relative"
+    onClick={() => setIsMenuOpen(!isMenuOpen)}
+    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+    aria-expanded={isMenuOpen}
+>
                     {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </div>

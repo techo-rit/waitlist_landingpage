@@ -7,10 +7,11 @@ export const Footer: React.FC = () => {
         <div className="container mx-auto px-6 flex flex-col-reverse md:flex-row justify-between items-center gap-6">
           
           {/* LEFT SIDE: Copyright Text (Matches the reference image style) */}
-          <div className="text-text-muted text-sm tracking-wide">
-            <span>&copy; 2025 All Rights Reserved, </span>
-            <span className="font-semibold text-text-primary">nopromt.ai</span>
-          </div>
+         // REPLACE WITH:
+<div className="text-text-muted text-sm tracking-wide">
+  <span>&copy; {new Date().getFullYear()} All Rights Reserved, </span>
+  <span className="font-semibold text-text-primary">nopromt.ai</span>
+</div>
           
           {/* RIGHT SIDE: Links with Vertical Dividers */}
           <div className="flex flex-wrap justify-center md:justify-end items-center text-sm text-text-muted">

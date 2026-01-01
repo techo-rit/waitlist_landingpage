@@ -4,9 +4,11 @@ import { LegalLayout } from '../components/LegalLayout';
 export const Terms: React.FC = () => {
   return (
     <LegalLayout 
-      title="TERMS OF SERVICE & USER AGREEMENT" 
-      date="Last Updated: January 1, 2026 | Effective Date: January 1, 2026"
-    >
+  title="TERMS OF SERVICE & USER AGREEMENT" 
+  date="Last Updated: January 1, 2026 | Effective Date: January 1, 2026"
+  pageTitle="Terms of Service"
+  description="Read nopromt.ai terms of service, user agreement, and usage policies for our AI style transformation platform."
+>
       <section>
         <h2 className="text-2xl font-bold text-text-primary mb-4">AGREEMENT TO TERMS</h2>
         <p className="mb-4">

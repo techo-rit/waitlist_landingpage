@@ -19,12 +19,21 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
+  // REPLACE WITH:
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  if (!email) return;
 
-    setStatus("loading");
-    setErrorMessage('');
+  // Email format validation using regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    setStatus("error");
+    setErrorMessage("Please enter a valid email address.");
+    return;
+  }
+
+  setStatus("loading");
+  setErrorMessage('');
 
     try {
       const { error } = await supabase

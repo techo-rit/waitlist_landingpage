@@ -4,9 +4,11 @@ import { LegalLayout } from '../components/LegalLayout';
 export const Privacy: React.FC = () => {
   return (
     <LegalLayout 
-      title="PRIVACY POLICY & LEGAL DISCLAIMERS" 
-      date="Last Updated: January 1, 2026 | Effective Date: January 1, 2026"
-    >
+  title="PRIVACY POLICY & LEGAL DISCLAIMERS" 
+  date="Last Updated: January 1, 2026 | Effective Date: January 1, 2026"
+  pageTitle="Privacy Policy"
+  description="Learn how nopromt.ai collects, uses, and protects your data. Our privacy policy covers data handling, cookies, and your rights."
+>
       <section>
         <h2 className="text-2xl font-bold text-text-primary mb-4">1. INTRODUCTION & ACKNOWLEDGMENT</h2>
         <p className="mb-4">
