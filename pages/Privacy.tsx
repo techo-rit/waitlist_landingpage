@@ -251,7 +251,7 @@ export const Privacy: React.FC = () => {
         </div>
 
         <h3 className="text-xl font-bold text-text-primary mt-6 mb-2">7.2 Deletion Process & Limitations</h3>
-        <p className="mb-2">You can request account deletion by emailing <a href="mailto:privacy@nopromt.ai" className="text-gold hover:underline">privacy@nopromt.ai</a> with subject "DELETE MY ACCOUNT."</p>
+        <p className="mb-2">You can request account deletion by emailing <a href="mailto:noprompt1111@gmail.com" className="text-gold hover:underline">noprompt1111@gmail.com</a> with subject "DELETE MY ACCOUNT."</p>
         <div className="grid md:grid-cols-2 gap-4 mt-4">
           <div className="bg-white/5 p-4 rounded">
             <strong className="text-text-primary block mb-2">Deletion includes:</strong>
@@ -321,7 +321,7 @@ export const Privacy: React.FC = () => {
             </ul>
           </div>
           <p className="mt-4 pt-4 border-t border-white/10">
-            <strong>How to Exercise Your Rights:</strong> Email <a href="mailto:privacy@nopromt.ai" className="text-gold hover:underline">privacy@nopromt.ai</a>. We respond to standard requests within 30 days.
+            <strong>How to Exercise Your Rights:</strong> Email <a href="mailto:noprompt1111@gmail.com" className="text-gold hover:underline">noprompt1111@gmail.com</a>. We respond to standard requests within 30 days.
           </p>
         </div>
       </section>
@@ -341,12 +341,12 @@ export const Privacy: React.FC = () => {
       <section>
         <h2 className="text-2xl font-bold text-text-primary mb-4">11. CHILDREN'S PRIVACY & PARENTAL RIGHTS</h2>
         <p className="mb-4">Our Service is intended for users 18 years and older. Users under 18 may use the Service only with verifiable parental consent.</p>
-        <p>Parents may request access/deletion of their child's data by emailing <a href="mailto:privacy@nopromt.ai" className="text-gold hover:underline">privacy@nopromt.ai</a> with proof of guardianship.</p>
+        <p>Parents may request access/deletion of their child's data by emailing <a href="mailto:noprompt1111@gmail.com" className="text-gold hover:underline">noprompt1111@gmail.com</a> with proof of guardianship.</p>
       </section>
 
       <section>
         <h2 className="text-2xl font-bold text-text-primary mb-4">12. CONSENT MANAGEMENT & WITHDRAWAL</h2>
-        <p className="mb-4">By using this Service, you consent to the data collection described herein. You can withdraw consent by emailing <a href="mailto:privacy@nopromt.ai" className="text-gold hover:underline">privacy@nopromt.ai</a>.</p>
+        <p className="mb-4">By using this Service, you consent to the data collection described herein. You can withdraw consent by emailing <a href="mailto:noprompt1111@gmail.com" className="text-gold hover:underline">noprompt1111@gmail.com</a>.</p>
       </section>
 
       <section>
@@ -397,7 +397,7 @@ export const Privacy: React.FC = () => {
         <h2 className="text-2xl font-bold text-text-primary mb-4">19. CONTACT & PRIVACY QUESTIONS</h2>
         <div className="space-y-2">
           <p><strong>General Inquiries:</strong> <a href="mailto:noprompt1111@gmail.com" className="text-gold hover:underline">noprompt1111@gmail.com</a></p>
-          <p><strong>Privacy Inquiries:</strong> <a href="mailto:privacy@nopromt.ai" className="text-gold hover:underline">privacy@nopromt.ai</a></p>
+          <p><strong>Privacy Inquiries:</strong> <a href="mailto:noprompt1111@gmail.com" className="text-gold hover:underline">noprompt1111@gmail.com</a></p>
           <p><strong>Data Protection Officer:</strong> Hrit Chaudhury</p>
         </div>
       </section>
@@ -406,12 +406,12 @@ export const Privacy: React.FC = () => {
         <h2 className="text-2xl font-bold text-text-primary mb-4">20. COMPLIANCE CERTIFICATIONS</h2>
         <p className="mb-2">This Privacy Policy is designed to comply with:</p>
         <div className="grid grid-cols-2 gap-2 text-sm opacity-90 mb-4">
-          <span>✅ GDPR (EU)</span>
-          <span>✅ CCPA (California)</span>
-          <span>✅ CalOPPA (California)</span>
-          <span>✅ DPDP Act 2023 (India)</span>
-          <span>✅ IT Act 2000 (India)</span>
-          <span>✅ PIPEDA (Canada)</span>
+          <span> GDPR (EU)</span>
+          <span> CCPA (California)</span>
+          <span> CalOPPA (California)</span>
+          <span> DPDP Act 2023 (India)</span>
+          <span> IT Act 2000 (India)</span>
+          <span> PIPEDA (Canada)</span>
         </div>
       </section>
 

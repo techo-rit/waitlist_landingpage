@@ -137,7 +137,7 @@ export const Terms: React.FC = () => {
           </table>
         </div>
         <p className="mb-4"><strong>No Refunds For:</strong> Buyer's remorse, low-quality generations, or bans due to Terms violations.</p>
-        <p><strong>To Request Refund:</strong> Email <a href="mailto:privacy@nopromt.ai" className="text-gold hover:underline">privacy@nopromt.ai</a> with order number and reason.</p>
+        <p><strong>To Request Refund:</strong> Email <a href="mailto:noprompt1111@gmail.com" className="text-gold hover:underline">privacy_support</a> with order number and reason.</p>
       </section>
 
       <section>
@@ -170,7 +170,7 @@ export const Terms: React.FC = () => {
       <section>
         <h2 className="text-2xl font-bold text-text-primary mb-4">8. INTELLECTUAL PROPERTY RIGHTS</h2>
         <p className="mb-2">We retain all IP rights in the Service platform, code, and brand ("nopromt.ai").</p>
-        <p className="mb-2"><strong>DMCA:</strong> We respect copyright law. If you believe your copyright is infringed, email <a href="mailto:legal@nopromt.ai" className="text-gold hover:underline">legal@nopromt.ai</a>.</p>
+        <p className="mb-2"><strong>DMCA:</strong> We respect copyright law. If you believe your copyright is infringed, email <a href="mailto:noprompt1111@gmail.com" className="text-gold hover:underline">noprompt1111@gmail.com</a>.</p>
       </section>
 
       <section>
@@ -191,9 +191,9 @@ export const Terms: React.FC = () => {
       <section>
         <h2 className="text-2xl font-bold text-text-primary mb-4">18. CONTACT & LEGAL NOTICES</h2>
         <div className="space-y-2">
-          <p><strong>General Inquiries:</strong> <a href="mailto:noprompt1111@gmail.com" className="text-gold hover:underline">noprompt1111@gmail.com</a></p>
-          <p><strong>Legal & Service of Process:</strong> <a href="mailto:legal@nopromt.ai" className="text-gold hover:underline">legal@nopromt.ai</a></p>
-          <p><strong>Refunds & Disputes:</strong> <a href="mailto:privacy@nopromt.ai" className="text-gold hover:underline">privacy@nopromt.ai</a></p>
+          <p><strong>General Inquiries:</strong> <a href="mailto:noprompt1111@gmail.com" className="text-gold hover:underline">inquiries</a></p>
+          <p><strong>Legal & Service of Process:</strong> <a href="mailto:noprompt1111@gmail.com" className="text-gold hover:underline">legal</a></p>
+          <p><strong>Refunds & Disputes:</strong> <a href="mailto:noprompt1111@gmail.com" className="text-gold hover:underline">refunds</a></p>
         </div>
       </section>
 
