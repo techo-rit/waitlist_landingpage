@@ -114,7 +114,7 @@ Welcome to the Inner Circle.                    </span>
         </div>
         
         <p className="text-text-muted text-sm">
-            Questions? <a href="mailto:hello@nopromt.ai" className="text-text-muted hover:text-text-primary underline">Contact Support</a>
+            Questions? <a href="mailto:noprompt1111@gmail.com" className="text-text-muted hover:text-text-primary underline">Contact Support</a>
         </p>
       </div>
     </div>
