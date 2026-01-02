@@ -282,18 +282,18 @@ function LandingPage({ onOpenWaitlist }: { onOpenWaitlist: () => void }) {
 
           </div>
 
-         {/* UPDATED BUTTON: "Launch App" connecting to app.nopromt.ai */}
-         <a
-  href="https://app.nopromt.ai/"
-  className="group relative overflow-hidden bg-gold-strong text-bg-surface text-lg font-bold px-10 py-4 rounded-full transition-all hover:scale-105 shadow-lg shadow-gold/30 flex items-center gap-2"
-  aria-label="Launch nopromt.ai application"
->
+          {/* UPDATED BUTTON: "Launch App" connecting to app.nopromt.ai */}
+          {/* <a
+            href="https://app.nopromt.ai/"
+            className="group relative overflow-hidden bg-gold-strong text-bg-surface text-lg font-bold px-10 py-4 rounded-full transition-all hover:scale-105 shadow-lg shadow-gold/30 flex items-center gap-2"
+            aria-label="Launch nopromt.ai application"
+          > */}
             {/* Shimmer effect */}
-            <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent z-10"></div>
+            {/* <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent z-10"></div> */}
 
-            <span className="relative z-20">Launch App</span>
-            <Icon name="ArrowRight" className="w-5 h-5 relative z-20 group-hover:translate-x-1 transition-transform" />
-          </a>
+            {/* <span className="relative z-20">Launch App</span> */}
+            {/* <Icon name="ArrowRight" className="w-5 h-5 relative z-20 group-hover:translate-x-1 transition-transform" /> */}
+          {/* </a> */}
         </div>
       </header>
 
@@ -589,16 +589,16 @@ function App() {
 
         <Navbar onOpenWaitlist={() => setIsWaitlistOpen(true)} />
 // REPLACE WITH:
-<Routes>
-  <Route path="/" element={<LandingPage onOpenWaitlist={() => setIsWaitlistOpen(true)} />} />
-  <Route path="/terms" element={<Terms />} />
-  <Route path="/privacy" element={<Privacy />} />
-  <Route path="/refund-policy" element={<RefundPolicy />} />
-  <Route path="/contact" element={<Contact />} />
-  <Route path="/pricing" element={<Pricing />} />
-  {/* 404 catch-all route - MUST be last */}
-  <Route path="*" element={<NotFound />} />
-</Routes>
+        <Routes>
+          <Route path="/" element={<LandingPage onOpenWaitlist={() => setIsWaitlistOpen(true)} />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/refund-policy" element={<RefundPolicy />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/pricing" element={<Pricing />} />
+          {/* 404 catch-all route - MUST be last */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
 
         <Footer />
       </div>

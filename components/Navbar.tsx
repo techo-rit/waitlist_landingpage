@@ -65,7 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
                     <div className="relative flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
                         <Logo width={32} height={32} />
                     </div>
-                    <span className="hidden md:block text-xl font-bold tracking-tight text-text-primary group-hover:text-gold transition-colors uppercase tracking-widest">nopromt.ai</span>
+                    <span className="hidden md:block text-xl font-bold tracking-tight text-text-primary group-hover:text-gold transition-colors tracking-widest">nopromt.ai</span>
                 </Link>
 
                 {/* Desktop Menu */}
