@@ -475,7 +475,6 @@ function LandingPage({ onOpenWaitlist }: { onOpenWaitlist: () => void }) {
           <div className="max-w-4xl mx-auto bg-bg-surface border border-border-subtle rounded-2xl overflow-hidden hover:border-gold/20 transition-colors">
             {/* Header - FIXED: Added mobile styling (2 cols mobile, 12 cols desktop) */}
             <div className="grid grid-cols-2 md:grid-cols-12 border-b border-border-subtle bg-white/5 p-6 md:p-8 gap-y-2 md:gap-y-0">
-              <div className="col-span-2 md:col-span-4 text-text-muted font-bold text-lg uppercase tracking-wider">Feature</div>
               <div className="col-span-1 md:col-span-4 text-text-muted font-bold text-lg text-center md:text-left pl-0 md:pl-2 uppercase tracking-wider">Other AI</div>
               <div className="col-span-1 md:col-span-4 text-gold font-bold text-lg text-center md:text-left pl-0 md:pl-2 uppercase tracking-wider">NoPromt</div>
             </div>
