@@ -4,11 +4,11 @@ import { LegalLayout } from '../components/LegalLayout';
 export const Privacy: React.FC = () => {
   return (
     <LegalLayout 
-  title="PRIVACY POLICY & LEGAL DISCLAIMERS" 
-  date="Last Updated: January 1, 2026 | Effective Date: January 1, 2026"
-  pageTitle="Privacy Policy"
-  description="Learn how nopromt.ai collects, uses, and protects your data. Our privacy policy covers data handling, cookies, and your rights."
->
+      title="PRIVACY POLICY & LEGAL DISCLAIMERS" 
+      date="Last Updated: January 2, 2026 | Effective Date: January 2, 2026"
+      pageTitle="Privacy Policy"
+      description="Learn how nopromt.ai collects, uses, and protects your data. Our privacy policy covers data handling, cookies, and your rights."
+    >
       <section>
         <h2 className="text-2xl font-bold text-text-primary mb-4">1. INTRODUCTION & ACKNOWLEDGMENT</h2>
         <p className="mb-4">
@@ -40,13 +40,15 @@ export const Privacy: React.FC = () => {
         </ul>
 
         <h3 className="text-xl font-bold text-text-primary mt-6 mb-2">2.2 Automatically Collected Data</h3>
-        <ul className="list-disc pl-6 space-y-2">
-          <li><strong className="text-text-primary">Usage Analytics:</strong> Pages visited, features accessed, time spent, click behavior</li>
-          <li><strong className="text-text-primary">Device Information:</strong> Browser type, OS, device model, screen resolution, device ID</li>
-          <li><strong className="text-text-primary">Network Data:</strong> IP address, approximate location (city/country level, NOT precise)</li>
-          <li><strong className="text-text-primary">Cookies:</strong> Google Analytics tracking cookies (_ga, ga*)</li>
+        <p className="mb-2 font-bold text-text-primary">⚠️ NO TRACKING: nopromt.ai does NOT use Google Analytics, advertising trackers, or any third-party analytics services.</p>
+        <p className="mb-2">Minimal data collected only for operational purposes:</p>
+        <ul className="list-disc pl-6 space-y-2 mb-4">
+          <li><strong className="text-text-primary">Device Information:</strong> Browser type, OS, device model, screen resolution (for debugging)</li>
+          <li><strong className="text-text-primary">Network Data:</strong> IP address (server logs only, 30-day retention for security)</li>
           <li><strong className="text-text-primary">Technical Logs:</strong> Error logs, server access logs, API call records</li>
+          <li><strong className="text-text-primary">Server Performance:</strong> Page load times and error tracking (Sentry)</li>
         </ul>
+        <p className="text-sm opacity-80">No cookies are used except Supabase session authentication (essential for account login only).</p>
 
         <h3 className="text-xl font-bold text-text-primary mt-6 mb-2">2.3 AI-Generated Data</h3>
         <ul className="list-disc pl-6 space-y-2">
@@ -63,7 +65,18 @@ export const Privacy: React.FC = () => {
       <section>
         <h2 className="text-2xl font-bold text-text-primary mb-4">3. COOKIES AND TRACKING TECHNOLOGIES</h2>
         
-        <h3 className="text-xl font-bold text-text-primary mt-6 mb-2">3.1 Cookies We Use</h3>
+        <h3 className="text-xl font-bold text-text-primary mt-6 mb-2">3.1 NO ANALYTICS TRACKING</h3>
+        <p className="mb-2">nopromt.ai uses ZERO analytics, advertising, or third-party tracking cookies. We do NOT:</p>
+        <ul className="list-disc pl-6 space-y-1 mb-4">
+          <li>Use Google Analytics (GA4 removed completely)</li>
+          <li>Use Meta Pixel or Facebook tracking</li>
+          <li>Use advertising retargeting services</li>
+          <li>Use any third-party behavioral analytics</li>
+          <li>Store user browsing history or behavioral data</li>
+        </ul>
+
+        <h3 className="text-xl font-bold text-text-primary mt-6 mb-2">3.2 Essential Cookies Only</h3>
+        <p className="mb-2">The ONLY cookies we use are essential for core functionality:</p>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse my-4 min-w-[600px]">
             <thead>
@@ -77,41 +90,32 @@ export const Privacy: React.FC = () => {
             </thead>
             <tbody>
               <tr className="border-b border-white/5">
-                <td className="p-2 font-mono text-sm">_ga</td>
-                <td className="p-2">Persistent user ID</td>
-                <td className="p-2">2 years</td>
-                <td className="p-2">Google Analytics</td>
-                <td className="p-2">Analytics</td>
+                <td className="p-2 font-mono text-sm">sb-token</td>
+                <td className="p-2">User authentication (login/logout)</td>
+                <td className="p-2">Session + 1 year</td>
+                <td className="p-2">Supabase</td>
+                <td className="p-2">Essential</td>
               </tr>
               <tr className="border-b border-white/5">
-                <td className="p-2 font-mono text-sm">_ga_G-9TBNMQZ8N0</td>
-                <td className="p-2">Session tracking</td>
-                <td className="p-2">2 years</td>
-                <td className="p-2">Google Analytics</td>
-                <td className="p-2">Analytics</td>
+                <td className="p-2 font-mono text-sm">sb-refresh-token</td>
+                <td className="p-2">Session refresh for security</td>
+                <td className="p-2">Session</td>
+                <td className="p-2">Supabase</td>
+                <td className="p-2">Essential</td>
               </tr>
             </tbody>
           </table>
         </div>
+        <p className="text-sm opacity-80 mb-6">These are essential cookies only. Without them, you cannot log in to your account.</p>
 
-        <h3 className="text-xl font-bold text-text-primary mt-6 mb-2">3.2 Cookie Usage Rights</h3>
-        <p className="mb-2">By using this Service, you consent to cookie placement. Cookies help us:</p>
+        <h3 className="text-xl font-bold text-text-primary mt-6 mb-2">3.3 Privacy-First Commitment</h3>
+        <p className="mb-2">We respect your privacy by:</p>
         <ul className="list-disc pl-6 space-y-1 mb-4">
-          <li>Analyze traffic patterns</li>
-          <li>Detect and prevent fraud</li>
-          <li>Measure feature effectiveness</li>
-          <li>Improve user experience</li>
+          <li>Not tracking your behavior across the web</li>
+          <li>Not collecting behavioral analytics</li>
+          <li>Not sharing your browsing data with third parties</li>
+          <li>Not using your data for targeted advertising</li>
         </ul>
-
-        <h3 className="text-xl font-bold text-text-primary mt-6 mb-2">3.3 Opt-Out Methods (Your Responsibility)</h3>
-        <p className="mb-2">Users may opt out of analytics tracking:</p>
-        <ul className="list-disc pl-6 space-y-1 mb-4">
-          <li>Browser cookie settings (each device/browser separately)</li>
-          <li>Google Analytics Opt-out Browser Add-on</li>
-          <li>DNS-level ad blockers or VPN services</li>
-          <li>Do Not Track (DNT) signals (honored where technically feasible)</li>
-        </ul>
-        <p className="text-sm opacity-80">IMPORTANT: We are not responsible for cookie storage issues caused by browser malfunctions, extensions, or user misconfiguration.</p>
       </section>
 
       <section>
@@ -120,7 +124,7 @@ export const Privacy: React.FC = () => {
         <ul className="list-disc pl-6 space-y-2">
           <li><strong className="text-text-primary">Explicit Consent</strong> – You agree when using the Service</li>
           <li><strong className="text-text-primary">Contract Performance</strong> – Necessary to deliver the AI transformation service</li>
-          <li><strong className="text-text-primary">Legitimate Business Interests</strong> – Prevent fraud, improve algorithms, ensure security</li>
+          <li><strong className="text-text-primary">Legitimate Business Interests</strong> – Prevent fraud, ensure security, improve service</li>
           <li><strong className="text-text-primary">Legal Compliance</strong> – Tax requirements (India), court orders, regulatory mandates</li>
           <li><strong className="text-text-primary">Public Interest</strong> – Safety, security, detection of illegal activity</li>
         </ul>
@@ -141,10 +145,10 @@ export const Privacy: React.FC = () => {
           <div>
             <strong className="text-text-primary block mb-1">Improvement & Analytics:</strong>
             <ul className="list-disc pl-6 opacity-90">
-              <li>Analyzing usage patterns (anonymized/aggregated)</li>
+              <li>Analyzing usage patterns (anonymized/aggregated, server-side only)</li>
               <li>Training and optimizing AI models using non-identifiable data</li>
-              <li>A/B testing and feature optimization</li>
               <li>Fraud detection and abuse prevention</li>
+              <li>NO behavioral tracking or user profiling</li>
             </ul>
           </div>
           <div>
@@ -172,7 +176,7 @@ export const Privacy: React.FC = () => {
         <h2 className="text-2xl font-bold text-text-primary mb-4">6. DATA SHARING AND THIRD PARTIES</h2>
         
         <h3 className="text-xl font-bold text-text-primary mt-6 mb-2">6.1 Third-Party Processors (Data Sharing)</h3>
-        <p className="mb-4">We do NOT sell your personal data for monetary compensation. However, we share data with these service providers:</p>
+        <p className="mb-4">We do NOT sell your personal data for monetary compensation. We share data ONLY with these essential service providers:</p>
         
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse my-4 min-w-[600px]">
@@ -194,15 +198,8 @@ export const Privacy: React.FC = () => {
                 <td className="p-2">DPA*</td>
               </tr>
               <tr className="border-b border-white/5">
-                <td className="p-2">Google Analytics</td>
-                <td className="p-2">Analytics</td>
-                <td className="p-2">Anonymized usage data, session IDs</td>
-                <td className="p-2">USA</td>
-                <td className="p-2">DPA*</td>
-              </tr>
-              <tr className="border-b border-white/5">
                 <td className="p-2">Supabase</td>
-                <td className="p-2">Database/hosting</td>
+                <td className="p-2">Database/hosting/auth</td>
                 <td className="p-2">Account data, generated content</td>
                 <td className="p-2">USA</td>
                 <td className="p-2">DPA*</td>
@@ -217,10 +214,10 @@ export const Privacy: React.FC = () => {
             </tbody>
           </table>
         </div>
-        <p className="text-sm opacity-70 mb-6">*DPA = Data Processing Agreement with GDPR/CCPA clauses</p>
+        <p className="text-sm opacity-70 mb-6">Removed from data sharing: Google Analytics (completely removed). <br/>*DPA = Data Processing Agreement with GDPR/CCPA clauses</p>
 
         <h3 className="text-xl font-bold text-text-primary mt-6 mb-2">6.2 International Data Transfers & Safeguards</h3>
-        <p className="mb-4">Your data may be transferred to the USA and EU. By using this Service, you consent to cross-border data transfers. Safeguards include Standard Contractual Clauses (SCCs), Encryption (TLS 1.2+ / AES-256), and service agreements.</p>
+        <p className="mb-4">Your data may be transferred to the USA. By using this Service, you consent to cross-border data transfers. Safeguards include Standard Contractual Clauses (SCCs), Encryption (TLS 1.2+ / AES-256), and service agreements.</p>
         <p className="p-4 bg-white/5 rounded border border-white/10 text-sm">
           <strong>Risk Acknowledgment:</strong> You understand that US law enforcement may access data under FISA, the Patriot Act, or other laws, and we may be prohibited from disclosing such requests.
         </p>
@@ -244,13 +241,13 @@ export const Privacy: React.FC = () => {
               <tr className="border-b border-white/5"><td className="p-2">Waitlist Emails</td><td className="p-2">6 months after service launch</td><td className="p-2">Legal compliance, business records</td></tr>
               <tr className="border-b border-white/5"><td className="p-2">Generated AI Images</td><td className="p-2">90 days after creation</td><td className="p-2">Storage cost optimization</td></tr>
               <tr className="border-b border-white/5"><td className="p-2">Payment Records</td><td className="p-2">7 years</td><td className="p-2">Indian tax law (Section 133 IT Act)</td></tr>
-              <tr className="border-b border-white/5"><td className="p-2">Analytics Data (GA4)</td><td className="p-2">2 months</td><td className="p-2">User privacy protection</td></tr>
               <tr className="border-b border-white/5"><td className="p-2">Server/Access Logs</td><td className="p-2">30 days</td><td className="p-2">Security, abuse detection</td></tr>
               <tr className="border-b border-white/5"><td className="p-2">Support Tickets</td><td className="p-2">2 years</td><td className="p-2">Legal, customer service records</td></tr>
               <tr className="border-b border-white/5"><td className="p-2">Inactive Accounts</td><td className="p-2">2 years of zero activity</td><td className="p-2">Notification sent before deletion</td></tr>
             </tbody>
           </table>
         </div>
+        <p className="text-sm opacity-80 mb-6">No Analytics Logs: We do not retain behavioral analytics data (Google Analytics completely removed).</p>
 
         <h3 className="text-xl font-bold text-text-primary mt-6 mb-2">7.2 Deletion Process & Limitations</h3>
         <p className="mb-2">You can request account deletion by emailing <a href="mailto:noprompt1111@gmail.com" className="text-gold hover:underline">noprompt1111@gmail.com</a> with subject "DELETE MY ACCOUNT."</p>
@@ -358,7 +355,7 @@ export const Privacy: React.FC = () => {
 
       <section>
         <h2 className="text-2xl font-bold text-text-primary mb-4">14. THIRD-PARTY LINKS & SERVICES</h2>
-        <p>This policy applies ONLY to nopromt.ai. We are NOT responsible for third-party websites (e.g., Razorpay, Google) linked from our service.</p>
+        <p>This policy applies ONLY to nopromt.ai. We are NOT responsible for third-party websites linked from our service.</p>
       </section>
 
       <section>
@@ -368,7 +365,7 @@ export const Privacy: React.FC = () => {
 
       <section>
         <h2 className="text-2xl font-bold text-text-primary mb-4">16. DO NOT SELL MY PERSONAL INFORMATION</h2>
-        <p className="mb-4">We DO NOT sell your personal information for monetary compensation. However, you may opt-out of data sharing practices that might be classified as "sales" under CCPA by emailing us.</p>
+        <p className="mb-4">We do NOT sell your personal information for monetary compensation. We do NOT track users for advertising purposes.</p>
       </section>
 
       <section>
@@ -380,7 +377,7 @@ export const Privacy: React.FC = () => {
           </div>
           <div className="p-4 bg-white/5 rounded">
             <h3 className="font-bold text-text-primary">LIABILITY LIMITATIONS</h3>
-            <p className="text-sm mt-2 opacity-90">We are NOT liable for data breaches, loss of data, inaccurate AI content, or indirect damages. Total liability shall not exceed the amount paid in the last 12 months or $100.</p>
+            <p className="text-sm mt-2 opacity-90">We are NOT liable for data breaches, loss of data, inaccurate AI content, or indirect damages. Total liability shall not exceed the amount paid in the last 12 months or ₹100.</p>
           </div>
         </div>
       </section>
@@ -432,10 +429,11 @@ export const Privacy: React.FC = () => {
           <li>You consent to arbitration and binding resolution in India</li>
           <li>You waive the right to jury trial and class action lawsuits</li>
           <li>You are 18+ (or have parental consent if under 18)</li>
+          <li>We do NOT track you with Google Analytics or any third-party analytics</li>
         </ul>
         <div className="text-center text-xs opacity-50">
           <p>© 2026 nopromt.ai. All Rights Reserved.</p>
-          <p>Last Updated: January 1, 2026</p>
+          <p>Last Updated: January 2, 2026</p>
         </div>
       </section>
     </LegalLayout>
