@@ -1,7 +1,38 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { Icon } from '../components/Icons';
 
 export const Pricing = () => {
+  // 1. State to track the active slide index (0 or 1)
+  const [activeSlide, setActiveSlide] = useState(0);
+  
+  // 2. Ref to access the scrollable container
+  const scrollContainerRef = useRef(null);
+
+  // 3. Handle scroll event to update dots based on position
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, clientWidth } = scrollContainerRef.current;
+      // Calculate which slide is focused based on scroll position
+      // We use Math.round to snap the index to the closest integer (0 or 1)
+      const newIndex = Math.round(scrollLeft / (clientWidth * 0.6)); 
+      if (newIndex !== activeSlide && (newIndex === 0 || newIndex === 1)) {
+        setActiveSlide(newIndex);
+      }
+    }
+  };
+
+  // 4. Function to click a dot and scroll to that section
+  const scrollToSlide = (index) => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = index * scrollContainerRef.current.clientWidth * 0.85; // approx width of card
+      scrollContainerRef.current.scrollTo({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+      setActiveSlide(index);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-bg-main pt-32 pb-20 px-4 md:px-8 relative overflow-hidden">
       {/* Background Ambient Glow */}
@@ -12,21 +43,26 @@ export const Pricing = () => {
         <h1 className="text-4xl md:text-6xl font-bold text-text-primary mb-4 tracking-tight">
           UNLOCK YOUR POTENTIAL 
         </h1>
-        <p className="text-xl md:text-2xl text-gold font-serif italic opacity-80">
+        <p className="text-xl md:text-2xl text-gold font-serif opacity-80">
           Rich thinking starts with “What's in there?”
         </p>
       </div>
 
       {/* Pricing Cards Container */}
       <div className="relative z-10 max-w-5xl mx-auto">
+        
         {/* Mobile: Horizontal Snap Scroll | Desktop: Grid */}
-        <div className="flex md:grid md:grid-cols-2 gap-6 overflow-x-auto snap-x snap-mandatory pb-8 md:pb-0 px-4 md:px-0 -mx-4 md:mx-0 scrollbar-hide">
+        <div 
+          ref={scrollContainerRef}
+          onScroll={handleScroll}
+          className="flex md:grid md:grid-cols-2 gap-6 overflow-x-auto snap-x snap-mandatory pb-8 md:pb-0 px-4 md:px-0 -mx-4 md:mx-0 scrollbar-hide"
+        >
           
           {/* Plan 1: Essentials */}
           <div className="flex-shrink-0 w-[85vw] md:w-auto snap-center relative group">
             <div className="h-full bg-[#0A0A0A] border border-white/10 rounded-2xl p-8 flex flex-col transition-all duration-300 hover:border-white/20 hover:shadow-2xl hover:shadow-white/5">
               {/* Trust Badge */}
-              <div className="mb-6 text-center">
+              <div className="mb-6 text-left">
                 <span className="text-xs uppercase tracking-widest text-text-muted/60 font-medium">
                   100% refund on unused creations
                 </span>
@@ -78,12 +114,11 @@ export const Pricing = () => {
               </div>
 
               {/* Trust Badge */}
-              <div className="mb-6 text-center">
+              <div className="mb-6 text-left">
                 <span className="text-xs uppercase tracking-widest text-gold/60 font-medium">
                   100% refund on unused creations
                 </span>
               </div>
-
               <h3 className="text-2xl uppercase font-serif text-gold mb-2">Ultimate</h3>
               <div className="flex items-baseline gap-1 mb-8">
                 <span className="text-4xl font-bold text-text-primary">$9</span>
@@ -122,10 +157,22 @@ export const Pricing = () => {
 
         </div>
         
-        {/* Mobile Scroll Indicator */}
+        {/* Mobile Scroll Indicator (Dynamic Dots) */}
         <div className="flex justify-center gap-2 mt-6 md:hidden">
-          <div className="w-2 h-2 rounded-full bg-white/20" />
-          <div className="w-2 h-2 rounded-full bg-gold" />
+          {/* Dot 1 */}
+          <button 
+            onClick={() => scrollToSlide(0)}
+            className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+              activeSlide === 0 ? 'bg-gold w-4' : 'bg-white/20'
+            }`}
+          />
+          {/* Dot 2 */}
+          <button 
+            onClick={() => scrollToSlide(1)}
+            className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+              activeSlide === 1 ? 'bg-gold w-4' : 'bg-white/20'
+            }`}
+          />
         </div>
       </div>
     </div>
