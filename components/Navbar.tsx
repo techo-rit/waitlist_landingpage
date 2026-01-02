@@ -54,9 +54,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
     return (
         <nav className="w-full z-50 bg-bg-main/80 backdrop-blur-md border-b border-border-subtle fixed top-0 left-0">
             <div className="container mx-auto px-6 h-20 flex items-center justify-between relative z-50">
-                <Link 
-                    to="/" 
-                    className="flex items-center gap-2 group cursor-pointer" 
+                <Link
+                    to="/"
+                    className="flex items-center gap-2 group cursor-pointer"
                     onClick={() => {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                         setIsMenuOpen(false);
@@ -85,18 +85,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
                 </div>
 
                 {/* Mobile Menu Toggle */}
-                <button 
-    className="md:hidden p-2 text-text-primary hover:text-gold transition-colors z-50 relative"
-    onClick={() => setIsMenuOpen(!isMenuOpen)}
-    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-    aria-expanded={isMenuOpen}
->
+                <button
+                    className="md:hidden p-2 text-text-primary hover:text-gold transition-colors z-50 relative"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                    aria-expanded={isMenuOpen}
+                >
                     {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </div>
 
             {/* Mobile Menu Overlay - Fixed UI/UX */}
-            <div 
+            <div
                 className={`fixed inset-0 h-screen w-screen z-40 md:hidden flex flex-col transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isMenuOpen ? 'visible pointer-events-auto' : 'invisible pointer-events-none'}`}
             >
                 {/* UX FIX: 
@@ -119,7 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
                     <button onClick={onOpenWaitlist} className="text-3xl font-light text-white/90 hover:text-gold transition-colors tracking-tight w-full text-center">Visual Decks</button>
                     <button onClick={() => handleScroll('why-us')} className="text-3xl font-light text-white/90 hover:text-gold transition-colors tracking-tight w-full text-center">Why Us</button>
                     <Link to="/pricing" className="text-3xl font-light text-white/90 hover:text-gold transition-colors tracking-tight w-full text-center" onClick={() => setIsMenuOpen(false)}>Pricing</Link>
-                    
+
                     <div className="h-px w-16 bg-white/10 my-2"></div>
 
                     <button

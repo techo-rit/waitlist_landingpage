@@ -91,7 +91,7 @@ function LandingPage({ onOpenWaitlist }: { onOpenWaitlist: () => void }) {
       <header className="relative min-h-[90vh] flex flex-col justify-center items-center pt-40 pb-12 overflow-hidden">
 
         {/* === Foreground Floating Templates === */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center pt-40 justify-center">
 
           {/* Global Ambient Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/10 rounded-full blur-[120px] mix-blend-screen animate-pulse-slow"></div>
