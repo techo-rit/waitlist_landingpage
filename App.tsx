@@ -14,6 +14,7 @@ import { RefundPolicy } from './pages/RefundPolicy';
 import { Contact } from './pages/Contact';
 import { Pricing } from './pages/Pricing';
 import { NotFound } from './pages/NotFound';
+
 /* ================================
    VIDEO URL CONFIG
 ===================================*/
@@ -281,19 +282,6 @@ function LandingPage({ onOpenWaitlist }: { onOpenWaitlist: () => void }) {
 
 
           </div>
-
-          {/* UPDATED BUTTON: "Launch App" connecting to app.nopromt.ai */}
-          {/* <a
-            href="https://app.nopromt.ai/"
-            className="group relative overflow-hidden bg-gold-strong text-bg-surface text-lg font-bold px-10 py-4 rounded-full transition-all hover:scale-105 shadow-lg shadow-gold/30 flex items-center gap-2"
-            aria-label="Launch nopromt.ai application"
-          > */}
-            {/* Shimmer effect */}
-            {/* <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent z-10"></div> */}
-
-            {/* <span className="relative z-20">Launch App</span> */}
-            {/* <Icon name="ArrowRight" className="w-5 h-5 relative z-20 group-hover:translate-x-1 transition-transform" /> */}
-          {/* </a> */}
         </div>
       </header>
 
@@ -432,17 +420,18 @@ function LandingPage({ onOpenWaitlist }: { onOpenWaitlist: () => void }) {
                   <div className="w-3 h-3 rounded-full bg-[#28C840] hover:scale-125 transition-transform"></div>
                 </div>
 
-                <div className="grid grid-cols-12 gap-6">
+                {/* FIXED: Changed from 'grid-cols-12' to 'grid-cols-1 md:grid-cols-12' */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
                   {/* Left: Input Image */}
-                  <div className="col-span-5 aspect-[3/4] rounded-xl border-2 border-dashed border-border-subtle bg-bg-main flex items-center justify-center group-hover:border-gold/20 transition-colors">
+                  <div className="md:col-span-5 aspect-[3/4] rounded-xl border-2 border-dashed border-border-subtle bg-bg-main flex items-center justify-center group-hover:border-gold/20 transition-colors">
                     <span className="text-text-muted text-sm font-medium">Your Photo</span>
                   </div>
 
                   {/* Right: Controls */}
-                  <div className="col-span-7 flex flex-col justify-between">
-                    <div className="h-4 bg-bg-main rounded w-full mb-4 opacity-50"></div>
+                  <div className="md:col-span-7 flex flex-col justify-between">
+                    <div className="hidden md:block h-4 bg-bg-main rounded w-full mb-4 opacity-50"></div>
 
-                    <div className="grid grid-cols-3 gap-3 mb-6">
+                    <div className="grid grid-cols-3 gap-3 mb-6 mt-4 md:mt-0">
                       <div className="aspect-square rounded-lg bg-bg-main border border-border-subtle hover:bg-white/5 transition-colors cursor-pointer"></div>
                       <div className="aspect-square rounded-lg bg-bg-main border-2 border-gold shadow-[0_0_15px_rgba(245,199,106,0.3)] relative cursor-pointer transform scale-105">
                         <div className="absolute inset-0 bg-gold/10"></div>
@@ -484,54 +473,54 @@ function LandingPage({ onOpenWaitlist }: { onOpenWaitlist: () => void }) {
           </div>
 
           <div className="max-w-4xl mx-auto bg-bg-surface border border-border-subtle rounded-2xl overflow-hidden hover:border-gold/20 transition-colors">
-            {/* Header */}
-            <div className="grid grid-cols-12 border-b border-border-subtle bg-white/5 p-6 md:p-8">
-              <div className="col-span-4 text-text-muted font-bold text-lg uppercase tracking-wider">Feature</div>
-              <div className="col-span-4 text-text-muted font-bold text-lg text-center md:text-left pl-2 uppercase tracking-wider">Other AI Tools</div>
-              <div className="col-span-4 text-gold font-bold text-lg pl-2 uppercase tracking-wider">NoPromt.ai</div>
+            {/* Header - FIXED: Added mobile styling (2 cols mobile, 12 cols desktop) */}
+            <div className="grid grid-cols-2 md:grid-cols-12 border-b border-border-subtle bg-white/5 p-6 md:p-8 gap-y-2 md:gap-y-0">
+              <div className="col-span-2 md:col-span-4 text-text-muted font-bold text-lg uppercase tracking-wider">Feature</div>
+              <div className="col-span-1 md:col-span-4 text-text-muted font-bold text-lg text-center md:text-left pl-0 md:pl-2 uppercase tracking-wider">Other AI</div>
+              <div className="col-span-1 md:col-span-4 text-gold font-bold text-lg text-center md:text-left pl-0 md:pl-2 uppercase tracking-wider">NoPromt</div>
             </div>
 
-            {/* Row 1 */}
-            <div className="grid grid-cols-12 border-b border-border-subtle p-6 md:p-8 items-center hover:bg-white/5 transition-colors group">
-              <div className="col-span-4 text-text-primary font-bold text-lg group-hover:text-gold transition-colors">Ease of Use</div>
-              <div className="col-span-4 flex items-center gap-3 text-text-muted">
-                <span>Hell of a confusion</span>
+            {/* Row 1 - FIXED: Added mobile styling */}
+            <div className="grid grid-cols-2 md:grid-cols-12 border-b border-border-subtle p-6 md:p-8 items-center hover:bg-white/5 transition-colors group gap-y-4 md:gap-y-0">
+              <div className="col-span-2 md:col-span-4 text-text-primary font-bold text-lg group-hover:text-gold transition-colors bg-white/5 md:bg-transparent p-2 md:p-0 rounded text-center md:text-left">Ease of Use</div>
+              <div className="col-span-1 md:col-span-4 flex justify-center md:justify-start items-center gap-3 text-text-muted">
+                <span className="text-center md:text-left">Hell of a confusion</span>
               </div>
-              <div className="col-span-4 flex items-center gap-3 text-text-primary font-bold">
-                <span>3 Clicks Max</span>
-              </div>
-            </div>
-
-            {/* Row 2 */}
-            <div className="grid grid-cols-12 border-b border-border-subtle p-6 md:p-8 items-center hover:bg-white/5 transition-colors group">
-              <div className="col-span-4 text-text-primary font-bold text-lg group-hover:text-gold transition-colors">Knowledge Required</div>
-              <div className="col-span-4 flex items-center gap-3 text-text-muted">
-                <span>Mental effort</span>
-              </div>
-              <div className="col-span-4 flex items-center gap-3 text-text-primary font-bold">
-                <span>Intentional selection</span>
+              <div className="col-span-1 md:col-span-4 flex justify-center md:justify-start items-center gap-3 text-text-primary font-bold">
+                <span className="text-center md:text-left">3 Clicks Max</span>
               </div>
             </div>
 
-            {/* Row 3 */}
-            <div className="grid grid-cols-12 border-b border-border-subtle p-6 md:p-8 items-center hover:bg-white/5 transition-colors group">
-              <div className="col-span-4 text-text-primary font-bold text-lg group-hover:text-gold transition-colors">Output Style</div>
-              <div className="col-span-4 flex items-center gap-3 text-text-muted">
-                <span>Disconnected</span>
+            {/* Row 2 - FIXED: Added mobile styling */}
+            <div className="grid grid-cols-2 md:grid-cols-12 border-b border-border-subtle p-6 md:p-8 items-center hover:bg-white/5 transition-colors group gap-y-4 md:gap-y-0">
+              <div className="col-span-2 md:col-span-4 text-text-primary font-bold text-lg group-hover:text-gold transition-colors bg-white/5 md:bg-transparent p-2 md:p-0 rounded text-center md:text-left">Knowledge Required</div>
+              <div className="col-span-1 md:col-span-4 flex justify-center md:justify-start items-center gap-3 text-text-muted">
+                <span className="text-center md:text-left">Mental effort</span>
               </div>
-              <div className="col-span-4 flex items-center gap-3 text-text-primary font-bold">
-                <span>Believable & grounded</span>
+              <div className="col-span-1 md:col-span-4 flex justify-center md:justify-start items-center gap-3 text-text-primary font-bold">
+                <span className="text-center md:text-left">Intentional selection</span>
               </div>
             </div>
 
-            {/* Row 4 */}
-            <div className="grid grid-cols-12 p-6 md:p-8 items-center hover:bg-white/5 transition-colors group">
-              <div className="col-span-4 text-text-primary font-bold text-lg group-hover:text-gold transition-colors">Experience</div>
-              <div className="col-span-4 flex items-center gap-3 text-text-muted">
-                <span>Toolbox</span>
+            {/* Row 3 - FIXED: Added mobile styling */}
+            <div className="grid grid-cols-2 md:grid-cols-12 border-b border-border-subtle p-6 md:p-8 items-center hover:bg-white/5 transition-colors group gap-y-4 md:gap-y-0">
+              <div className="col-span-2 md:col-span-4 text-text-primary font-bold text-lg group-hover:text-gold transition-colors bg-white/5 md:bg-transparent p-2 md:p-0 rounded text-center md:text-left">Output Style</div>
+              <div className="col-span-1 md:col-span-4 flex justify-center md:justify-start items-center gap-3 text-text-muted">
+                <span className="text-center md:text-left">Disconnected</span>
               </div>
-              <div className="col-span-4 flex items-center gap-3 text-text-primary font-bold">
-                <span>Discovery</span>
+              <div className="col-span-1 md:col-span-4 flex justify-center md:justify-start items-center gap-3 text-text-primary font-bold">
+                <span className="text-center md:text-left">Believable & grounded</span>
+              </div>
+            </div>
+
+            {/* Row 4 - FIXED: Added mobile styling */}
+            <div className="grid grid-cols-2 md:grid-cols-12 p-6 md:p-8 items-center hover:bg-white/5 transition-colors group gap-y-4 md:gap-y-0">
+              <div className="col-span-2 md:col-span-4 text-text-primary font-bold text-lg group-hover:text-gold transition-colors bg-white/5 md:bg-transparent p-2 md:p-0 rounded text-center md:text-left">Experience</div>
+              <div className="col-span-1 md:col-span-4 flex justify-center md:justify-start items-center gap-3 text-text-muted">
+                <span className="text-center md:text-left">Toolbox</span>
+              </div>
+              <div className="col-span-1 md:col-span-4 flex justify-center md:justify-start items-center gap-3 text-text-primary font-bold">
+                <span className="text-center md:text-left">Discovery</span>
               </div>
             </div>
 
@@ -588,7 +577,6 @@ function App() {
         />
 
         <Navbar onOpenWaitlist={() => setIsWaitlistOpen(true)} />
-// REPLACE WITH:
         <Routes>
           <Route path="/" element={<LandingPage onOpenWaitlist={() => setIsWaitlistOpen(true)} />} />
           <Route path="/terms" element={<Terms />} />
