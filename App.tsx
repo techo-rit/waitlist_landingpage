@@ -473,12 +473,8 @@ function LandingPage({ onOpenWaitlist }: { onOpenWaitlist: () => void }) {
           </div>
 
           <div className="max-w-4xl mx-auto bg-bg-surface border border-border-subtle rounded-2xl overflow-hidden hover:border-gold/20 transition-colors">
-            {/* Header - FIXED: 
-                Added a spacer div (md:col-span-4) at the start for Desktop view.
-                This ensures "Other AI" and "NoPromt" align with their respective data columns below.
-            */}
+            {/* Header - FIXED: Added mobile styling (2 cols mobile, 12 cols desktop) */}
             <div className="grid grid-cols-2 md:grid-cols-12 border-b border-border-subtle bg-white/5 p-6 md:p-8 gap-y-2 md:gap-y-0">
-              <div className="hidden md:block md:col-span-4"></div> {/* <-- THIS SPACER WAS MISSING */}
               <div className="col-span-1 md:col-span-4 text-text-muted font-bold text-lg text-center md:text-left pl-0 md:pl-2 uppercase tracking-wider">Other AI</div>
               <div className="col-span-1 md:col-span-4 text-gold font-bold text-lg text-center md:text-left pl-0 md:pl-2 uppercase tracking-wider">NoPromt</div>
             </div>

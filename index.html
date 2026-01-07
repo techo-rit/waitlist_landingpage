@@ -95,7 +95,76 @@
 
 
 
-  <!-- Tailwind CSS is now bundled via Vite/PostCSS - see tailwind.config.js -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bg-main': '#020202',
+            'bg-surface': '#111111',
+            'text-primary': '#FFFFFF',
+            'text-secondary': '#E5E5E5',
+            'text-muted': '#B3B3B3',
+            'border-subtle': '#262626',
+            'gold': '#F5C76A',
+            'gold-strong': '#F1B942',
+            'gold-soft': '#FFE7B0',
+            brand: {
+              50: '#fbf8f2',
+              100: '#f5ebd6',
+              200: '#ebdcb0',
+              300: '#e0c885',
+              400: '#F5C76A', // Core gold
+              500: '#F1B942', // Strong gold
+              600: '#d99f2b',
+              700: '#b37e1f',
+              800: '#8f621b',
+              900: '#704b18',
+              950: '#422a0a',
+            },
+            accent: {
+              DEFAULT: '#F1B942', // Gold strong
+              glow: '#FFE7B0', // Gold soft
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'SF Pro Text', 'Segoe UI', 'sans-serif'],
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+          },
+          letterSpacing: {
+            'luxury': '0.1em',
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 8s ease-in-out infinite',
+            'float-delayed': 'float 8s ease-in-out 4s infinite',
+            'shimmer': 'shimmer 3s linear infinite',
+            'marquee': 'marquee 60s linear infinite',
+            'marquee-reverse': 'marquee-reverse 60s linear infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-15px)' },
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-200% 0' },
+              '100%': { backgroundPosition: '200% 0' },
+            },
+            marquee: {
+              '0%': { transform: 'translateY(0)' },
+              '100%': { transform: 'translateY(-50%)' },
+            },
+            'marquee-reverse': {
+              '0%': { transform: 'translateY(-50%)' },
+              '100%': { transform: 'translateY(0)' },
+            }
+          }
+        },
+      },
+    }
+  </script>
   <!-- Structured Data: SoftwareApplication -->
   <script type="application/ld+json">
 {
@@ -263,20 +332,23 @@
       box-shadow: 0 0 16px rgba(245, 199, 106, 0.35);
     }
   </style>
-  <!-- Import map removed: React/dependencies bundled via Vite -->
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@supabase/supabase-js": "https://aistudiocdn.com/@supabase/supabase-js@^2.86.0"
+  }
+}
+</script>
   <link rel="stylesheet" href="/index.css">
 </head>
 
 <body>
   <div id="root">
-    <!-- Critical loading state - prevents Flash of Unstyled Content (FOUC) -->
-    <div id="initial-loader" style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#020202;z-index:9999;">
-      <div style="text-align:center;">
-        <div style="width:40px;height:40px;border:3px solid #262626;border-top-color:#F5C76A;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 16px;"></div>
-        <p style="color:#B3B3B3;font-family:system-ui,sans-serif;font-size:14px;">Loading...</p>
-      </div>
-      <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
-    </div>
+
 <noscript>
   <div style="padding: 40px; text-align: center; font-family: sans-serif;">
     <h1>nopromt.ai - AI Style Transformation</h1>

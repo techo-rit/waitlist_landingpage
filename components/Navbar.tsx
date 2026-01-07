@@ -37,32 +37,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
     }, [isMenuOpen]);
 
     const handleScroll = (id: string) => {
-        // BUGFIX: Reset body styles BEFORE closing menu to prevent scroll disruption
-        // The body position:fixed was causing scroll calculations to fail on mobile
-        document.body.style.overflow = 'unset';
-        document.body.style.position = 'unset';
-        document.body.style.width = 'unset';
-        
         setIsMenuOpen(false);
-        
         if (location.pathname !== '/') {
             navigate('/');
-            // Increased timeout to ensure DOM is ready after navigation
-            // 300ms accounts for route transition + React render cycle
+            // Wait for navigation to complete before scrolling
             setTimeout(() => {
                 const element = document.getElementById(id);
-                if (element) {
-                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }, 300);
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
         } else {
-            // Small delay to let menu close animation complete
-            setTimeout(() => {
-                const element = document.getElementById(id);
-                if (element) {
-                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }, 50);
+            const element = document.getElementById(id);
+            if (element) element.scrollIntoView({ behavior: 'smooth' });
         }
     };
 
