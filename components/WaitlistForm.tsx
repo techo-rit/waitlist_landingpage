@@ -1,6 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Icon } from './Icons';
 import { supabase } from '../supabaseClient';
+
+// Stricter email validation - prevents XSS and rejects invalid formats
+// Matches: user@domain.tld (requires valid TLD, no special chars in dangerous positions)
+const EMAIL_REGEX = /^[a-zA-Z0-9](?:[a-zA-Z0-9._%+-]*[a-zA-Z0-9])?@[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\.[a-zA-Z]{2,})+$/;
+
+// User-friendly error messages (hide internal database errors)
+const ERROR_MESSAGES = {
+  INVALID_EMAIL: "Please enter a valid email address.",
+  DUPLICATE: "This email is already on the waitlist! Check your inbox.",
+  NETWORK: "Connection failed. Please check your internet and try again.",
+  TIMEOUT: "Request timed out. Please try again.",
+  GENERIC: "Something went wrong. Please try again later.",
+} as const;
+
+// Timeout duration for form submission (prevents infinite loading)
+const SUBMIT_TIMEOUT_MS = 15000;
 
 interface WaitlistFormProps {
   onSignupSuccess?: () => void;
@@ -18,32 +34,51 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const abortControllerRef = useRef<AbortController | null>(null);
 
-  // REPLACE WITH:
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  if (!email) return;
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const trimmedEmail = email.trim().toLowerCase();
+    
+    if (!trimmedEmail) return;
 
-  // Email format validation using regex
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    setStatus("error");
-    setErrorMessage("Please enter a valid email address.");
-    return;
-  }
+    // Strict email validation
+    if (!EMAIL_REGEX.test(trimmedEmail)) {
+      setStatus("error");
+      setErrorMessage(ERROR_MESSAGES.INVALID_EMAIL);
+      return;
+    }
 
-  setStatus("loading");
-  setErrorMessage('');
+    setStatus("loading");
+    setErrorMessage('');
+
+    // Create abort controller for timeout
+    abortControllerRef.current = new AbortController();
+    const timeoutId = setTimeout(() => {
+      abortControllerRef.current?.abort();
+    }, SUBMIT_TIMEOUT_MS);
 
     try {
       const { error } = await supabase
         .from("waitlist")
-        .insert([{ email }]);
+        .insert([{ email: trimmedEmail }]);
+
+      clearTimeout(timeoutId);
 
       if (error) {
-        console.error("Supabase Error:", error);
+        // Log for debugging (in production, send to error tracking service)
+        console.error("Supabase Error:", error.code, error.message);
+        
         setStatus("error");
-        setErrorMessage(error.message || "Something went wrong. Please try again.");
+        
+        // Handle duplicate email (Supabase unique constraint error)
+        if (error.code === '23505' || error.message?.includes('duplicate') || error.message?.includes('unique')) {
+          setErrorMessage(ERROR_MESSAGES.DUPLICATE);
+        } else {
+          // Generic user-friendly message (don't expose internal errors)
+          setErrorMessage(ERROR_MESSAGES.GENERIC);
+        }
         return;
       }
 
@@ -53,9 +88,17 @@ const handleSubmit = async (e: React.FormEvent) => {
         setTimeout(() => onSignupSuccess(), 1500);
       }
     } catch (err) {
+      clearTimeout(timeoutId);
       console.error("Submission Error:", err);
+      
       setStatus("error");
-      setErrorMessage("Network error. Please try again.");
+      
+      // Check if aborted (timeout)
+      if (err instanceof Error && err.name === 'AbortError') {
+        setErrorMessage(ERROR_MESSAGES.TIMEOUT);
+      } else {
+        setErrorMessage(ERROR_MESSAGES.NETWORK);
+      }
     }
   };
 

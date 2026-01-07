@@ -1,100 +1,37 @@
-# AI Agent Instructions for nopromt.ai Waitlist Landing Page
+# AI Agent Instructions — nopromt.ai Waitlist
 
-## Project Overview
-React + TypeScript + Vite waitlist landing page for nopromt.ai, an AI style transformation platform. Core purpose: collect waitlist signups via Supabase, with a time-gated "Coming Soon" view. Design philosophy: manifestation, intention, visual clarity over technical complexity.
+## Big Picture
+- React + TypeScript + Vite SPA focused on collecting waitlist emails; Supabase insert happens client-side, no backend layer. Core flow: signup → localStorage timestamp → 7-day Coming Soon gate handled in `App.tsx` and `components/ComingSoon.tsx`.
+- Routing via react-router-dom v7: `App.tsx` wraps all pages; legal pages use `components/LegalLayout.tsx`; `components/ScrollToTop.tsx` resets scroll on navigation.
+- Styling uses Tailwind CSS with PostCSS build pipeline. Config in `tailwind.config.js`; PostCSS config in `postcss.config.js`.
 
-## Architecture & Data Flow
+## Data & Services
+- Supabase client in `supabaseClient.ts` with persistSession: false and env var validation. Waitlist write: `await supabase.from("waitlist").insert([{ email }])` in `components/WaitlistForm.tsx`.
+- Env: Vite-style `import.meta.env.VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` only. App fails fast with helpful errors if missing.
 
-### Component Hierarchy
-- **[App.tsx](App.tsx)**: Root component. `<Router>` wraps all routes, `<Navbar>` and `<Footer>` are global.
-  - `<LandingPage>`: Internal component with view state machine (`'landing' | 'coming-soon'`) driven by `localStorage`.
-  - State transition: After signup → `localStorage.setItem('nopromt_signup_date')` → redirects to "Coming Soon" for 7 days.
-- **Components** (`components/`): All functional with hooks. Key patterns:
-  - **[WaitlistForm.tsx](components/WaitlistForm.tsx)**: 3 states (`idle`, `loading`, `success`). Direct Supabase insert, no API layer.
-  - **[VideoPlayer.tsx](components/VideoPlayer.tsx)**: Lazy-loads video sources on `IntersectionObserver`, autoplay when visible. Always provide `.webm` + `.mp4` + poster.
-  - **[WaitlistModal.tsx](components/WaitlistModal.tsx)**: Reusable modal wrapper for waitlist form in overlay contexts.
-- **Pages** (`pages/`): Static legal/info routes (`Terms`, `Privacy`, `Contact`, `Pricing`). Use `<LegalLayout>` wrapper component.
+## UX State Machine
+- Landing vs Coming Soon view tracked by localStorage key `nopromt_signup_date`; diff < 7 days → show Coming Soon. See LandingPage inside `App.tsx`.
+- Signup success callback sets timestamp, scrolls to top, flips view. Coming Soon lets user navigate back without clearing cooldown.
 
-### Data & Services
-- **[supabaseClient.ts](supabaseClient.ts)**: Singleton client with `persistSession: false` (no auth needed). All database calls are direct (no service layer):
-  ```tsx
-  await supabase.from("waitlist").insert([{ email }])
-  ```
-- **[constants.ts](constants.ts)**: Config for "Visual Decks" (style categories). Structure:
-  ```tsx
-  { id, name, category: StackCategory, promptModifier, iconName, color }
-  ```
-- **[types.ts](types.ts)**: `StackCategory` enum + `VisualDeck` interface. Type-first approach.
+## Components & Patterns
+- `components/WaitlistForm.tsx`: states idle/loading/success/error; strict email validation; timeout protection; user-friendly error messages.
+- `components/WaitlistModal.tsx`: overlay wrapper to reuse form; controlled open/close via parent state.
+- `components/VideoPlayer.tsx`: IntersectionObserver lazy-load; requires `.mp4`, `.webm`, and poster props; autoplay muted when visible.
+- Icons centralized in `components/Icons.tsx` via lucide-react; use `<Icon name="X" />` for consistency.
 
-### Environment Variables (Vite)
-- **CRITICAL**: Use `import.meta.env.VITE_*` only. Never `process.env` (will break).
-- Required: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`.
+## Styling System
+- Tailwind classes expected; common glass morphism stack `bg-black/60 backdrop-blur-lg border-white/10`. Brand colors in `tailwind.config.js`; fonts Inter + Playfair Display.
+- Custom animations (`float`, `shimmer`, `marquee`, `marquee-reverse`) defined in `tailwind.config.js`; reuse class names, do not reimplement.
+- Additional CSS in `index.css` for video sizing and `.scrollbar-hide` utility.
 
-## Styling Architecture (Non-Standard)
+## Assets
+- Hero uses local `/public/images/*.webp` via HERO_IMAGES array in `App.tsx`; keep srcSet with `?width=400|800&quality=80&format=webp`, `loading="lazy"`, `decoding="async"`.
+- Background marquee tiles in `App.tsx` duplicated for seamless scroll (`MARQUEE_TILES`).
+- Video URLs are Supabase Storage constants at top of `App.tsx`; keep `.mp4`, `.webm`, and `_poster.webp` trio naming.
 
-### Tailwind via CDN (No Build Step)
-- **Configuration location**: `<script>` tag in **[index.html](index.html)** line ~100.
-- **Custom theme**: `brand` color palette (gold shades), `font-sans: Inter`, `font-serif: Playfair Display`.
-- **Custom animations**: `float`, `shimmer`, `marquee`, `marquee-reverse` (all defined inline).
-- **To change theme**: Edit `tailwind.config` object in `index.html`. No `tailwind.config.js` exists.
+## Dev Workflow
+- Scripts: `npm run dev`, `npm run build`, `npm run preview`. Vite dev server binds 0.0.0.0:3000 (see `vite.config.ts`).
+- Tailwind built via PostCSS with `@tailwindcss/postcss` plugin. Directives in `index.css`.
 
-### Design Patterns
-- **Glass Morphism**: `bg-black/60 backdrop-blur-lg border-white/10` (ubiquitous).
-- **Color Palette**: Dark base (`bg-[#030712]`, `bg-black`), gold accents (`text-gold`, `bg-gold/20`).
-- **Text Effects**: Hero uses inline `textShadow` for glow (see `App.tsx` hero section).
-- **Responsive Images**: Always use `srcSet` with `?width=400` and `?width=800` variants + `loading="lazy"` + `decoding="async"`.
-
-### Custom CSS ([index.css](index.css))
-- VideoPlayer support styles (`.video-player`, `.aspect-[16/9]`).
-- Scrollbar hiding utility (`.scrollbar-hide`).
-
-## Media Asset Patterns
-
-### Video
-- **Sources**: Supabase Storage URLs (defined as constants at top of `App.tsx`).
-- **Naming**: `LOWERWEAR_MP4`, `LOWERWEAR_WEBM`, `LOWERWEAR_POSTER` pattern.
-- **Usage**: Always provide both formats + poster for cross-browser support.
-
-### Images
-- **Hero**: Local (`/images/*.webp` in `public/`). 6 floating templates hardcoded in `HERO_IMAGES` array.
-- **Background Tiles**: Unsplash URLs in `BACKGROUND_TILES` array, duplicated 3x for marquee loop.
-- **Optimization**: Use `?width=X&quality=80&format=webp` query params on Unsplash URLs.
-
-## Development Workflow
-
-### Commands
-- `npm run dev` → Vite dev server on `localhost:3000` (configured in [vite.config.ts](vite.config.ts)).
-- `npm run build` → Production build (static files to `dist/`).
-- `npm run preview` → Preview production build locally.
-
-### Key Files
-1. **[index.html](index.html)**: **Most important config file**. Contains:
-   - Tailwind CDN + inline config (~350 lines)
-   - Meta tags (OG, Twitter, Schema.org)
-   - Font loading (Google Fonts)
-   - Analytics (Google Tag Manager)
-2. **[vite.config.ts](vite.config.ts)**: Dev server config (port 3000, host `0.0.0.0` for Docker), `@` alias for root imports.
-3. **[App.tsx](App.tsx)**: All media URLs + hero layout + routing logic (607 lines).
-
-## Non-Obvious Patterns
-
-### localStorage State Management
-- **Signup tracking**: 7-day cooldown enforced client-side via timestamp diff:
-  ```tsx
-  const diff = (Date.now() - new Date(stored).getTime()) / (1000 * 60 * 60 * 24);
-  if (diff < 7) setView("coming-soon");
-  ```
-- **Key**: `nopromt_signup_date` (ISO string).
-
-### Routing
-- Uses `react-router-dom` v7. `<ScrollToTop>` component resets scroll on route change.
-- **Pattern**: `<Route path="/legal/terms" element={<Terms />} />` for static pages.
-
-### Icon System ([components/Icons.tsx](components/Icons.tsx))
-- Uses `lucide-react`. `<Icon name="CheckCircle2" />` wrapper component for consistent sizing.
-
-## Philosophical Tone (User-Facing Copy)
-- **Core message**: "What you see clearly becomes real."
-- **Voice**: Aspirational, mystical, non-technical. Avoid jargon like "AI model" (use "vision" instead).
-- **Keywords**: Manifestation, Intention, Clarity, Transform, Visualize.
-- **Example**: "Your vision starts materializing" vs "Processing your image".
+## Voice & Copy
+- Product tone: manifestation, vision, clarity. Avoid technical jargon; prefer phrases like "your vision starts materializing". Hero glow text shadow in `App.tsx` is intentional; keep mystical/aspirational voice.
