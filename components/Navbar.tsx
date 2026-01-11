@@ -91,9 +91,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-8">
-                    <button onClick={() => handleScroll('how-it-works')} className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors hover:scale-105 transform">How it Works</button>
+                    <button onClick={() => handleScroll('how-it-works')} className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors hover:scale-105 transform">How it works</button>
                     <button onClick={onOpenWaitlist} className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors hover:scale-105 transform">Visual Decks</button>
-                    <button onClick={() => handleScroll('why-us')} className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors hover:scale-105 transform">Why Us</button>
+                    <button onClick={() => handleScroll('why-us')} className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors hover:scale-105 transform">Why us</button>
                     <Link to="/pricing" className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors hover:scale-105 transform">Pricing</Link>
                     <button
                         onClick={onOpenWaitlist}
@@ -136,9 +136,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
                     and prevents items from overlapping with the header/logo.
                 */}
                 <div className={`relative flex flex-col items-center gap-8 w-full pt-32 px-6 transition-transform duration-500 delay-75 ${isMenuOpen ? 'translate-y-0' : 'translate-y-8'}`}>
-                    <button onClick={() => handleScroll('how-it-works')} className="text-3xl font-light text-white/90 hover:text-gold transition-colors tracking-tight w-full text-center">How it Works</button>
+                    <button onClick={() => handleScroll('how-it-works')} className="text-3xl font-light text-white/90 hover:text-gold transition-colors tracking-tight w-full text-center">How it works</button>
                     <button onClick={onOpenWaitlist} className="text-3xl font-light text-white/90 hover:text-gold transition-colors tracking-tight w-full text-center">Visual Decks</button>
-                    <button onClick={() => handleScroll('why-us')} className="text-3xl font-light text-white/90 hover:text-gold transition-colors tracking-tight w-full text-center">Why Us</button>
+                    <button onClick={() => handleScroll('why-us')} className="text-3xl font-light text-white/90 hover:text-gold transition-colors tracking-tight w-full text-center">Why us</button>
                     <Link to="/pricing" className="text-3xl font-light text-white/90 hover:text-gold transition-colors tracking-tight w-full text-center" onClick={() => setIsMenuOpen(false)}>Pricing</Link>
 
                     <div className="h-px w-16 bg-white/10 my-2"></div>

@@ -263,7 +263,7 @@ function LandingPage({ onOpenWaitlist }: { onOpenWaitlist: () => void }) {
           {/* Description Box */}
           <div className="max-w-2xl mb-12">
             <p
-              className="text-lg md:text-xl text-text-secondary leading-relaxed font-medium"
+              className="text-lg md:text-xl text-text-secondary leading-relaxed font-medium text-gold"
               style={{
                 textShadow: `
       0 0 10px rgba(0, 0, 0, 0.5)
@@ -469,7 +469,7 @@ function LandingPage({ onOpenWaitlist }: { onOpenWaitlist: () => void }) {
 
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-4 uppercase tracking-wide">Why NoPromt?</h2>
-            <p className="text-xl text-text-secondary">It's not a changing room, it's a tranformation room</p>
+            <p className="text-xl text-text-secondary">It's not a changing room, it's a transformation room</p>
           </div>
 
           <div className="max-w-4xl mx-auto bg-bg-surface border border-border-subtle rounded-2xl overflow-hidden hover:border-gold/20 transition-colors">
