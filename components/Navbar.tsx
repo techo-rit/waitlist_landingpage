@@ -11,43 +11,64 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenWaitlist }) => {
     const location = useLocation();
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    
+    // Store scroll position when menu opens (fixes iOS Safari position:fixed issue)
+    const scrollPositionRef = React.useRef(0);
 
     // Close menu when route changes
     useEffect(() => {
         setIsMenuOpen(false);
     }, [location]);
 
-    // Prevent scrolling when menu is open
+    // Prevent scrolling when menu is open while preserving scroll position
     useEffect(() => {
         if (isMenuOpen) {
+            // Save current scroll position BEFORE locking
+            scrollPositionRef.current = window.scrollY;
             document.body.style.overflow = 'hidden';
-            // iOS Safari fix for scroll locking
             document.body.style.position = 'fixed';
             document.body.style.width = '100%';
+            // Offset body to maintain visual position
+            document.body.style.top = `-${scrollPositionRef.current}px`;
         } else {
-            document.body.style.overflow = 'unset';
-            document.body.style.position = 'unset';
-            document.body.style.width = 'unset';
+            // Restore scroll position AFTER unlocking
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+            document.body.style.top = '';
+            // Restore the saved scroll position
+            if (scrollPositionRef.current > 0) {
+                window.scrollTo(0, scrollPositionRef.current);
+            }
         }
         return () => {
-            document.body.style.overflow = 'unset';
-            document.body.style.position = 'unset';
-            document.body.style.width = 'unset';
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+            document.body.style.top = '';
         };
     }, [isMenuOpen]);
 
     const handleScroll = (id: string) => {
+        // Close menu first - this will restore scroll position via useEffect
         setIsMenuOpen(false);
+        
         if (location.pathname !== '/') {
             navigate('/');
-            // Wait for navigation to complete before scrolling
+            // Wait for navigation + DOM update before scrolling
             setTimeout(() => {
                 const element = document.getElementById(id);
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
+            }, 150);
         } else {
-            const element = document.getElementById(id);
-            if (element) element.scrollIntoView({ behavior: 'smooth' });
+            // Wait for menu close animation and body position restore
+            // requestAnimationFrame ensures DOM has updated after state change
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    const element = document.getElementById(id);
+                    if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }, 50);
+            });
         }
     };
 
